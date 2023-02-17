@@ -33,6 +33,12 @@ const ArticleRowInterface = ({ article }) => {
     setIsOpen(false);
   }
 
+  async function switchVisbility ({idArticle}) {
+    api.post(
+      
+    )
+  }
+
   function handleOpenModal() {
     setIsOpen(true);
   }

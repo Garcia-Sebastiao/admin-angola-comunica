@@ -64,6 +64,14 @@ export default () => {
               </ProtectedLayout>
             }
           />
+          <Route
+            path="/users_page"
+            element={
+              <ProtectedLayout>
+                <Users />
+              </ProtectedLayout>
+            }
+          />
         </Routes>
       </AuthProvider>
     </div>

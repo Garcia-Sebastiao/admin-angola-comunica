@@ -44,13 +44,6 @@ export default () => (
               </a>
             </Link>
           </li>
-          <li>
-            <Link to={`/messages_page`}>
-              <a>
-                <img src={iconMessage} alt="" />
-              </a>
-            </Link>
-          </li>
         </ul>
 
         <ul>

@@ -133,7 +133,7 @@ export default () => {
             
           </div>
 
-          <a href="/users">Ver todos</a>
+          <a href="/users_page">Ver todos</a>
         </div>
 
         <a className="logoff" href="/">
