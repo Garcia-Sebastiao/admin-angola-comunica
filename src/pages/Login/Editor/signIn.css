@@ -79,3 +79,9 @@
 {
     filter: brightness(0.5);
 }
+.page-auth main a 
+{
+    font-size: 0.9rem;
+    color: white;
+    filter: brightness(0.9);
+}

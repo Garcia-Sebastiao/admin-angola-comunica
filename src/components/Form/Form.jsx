@@ -7,22 +7,12 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { api } from "../../services/api";
 import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
-export default ({ idArticle }) => {
+export default ({  }) => {
   const form = new FormData();
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const [values, setValues] = useState([]);
   const token = getUserLocalStorage().token;
-
-  useEffect(() => {
-    if (idArticle) {
-      axios
-        .get(`http://localhost:5000/articles/${idArticle}`)
-        .then((response) => {
-          setValues(response.data);
-        });
-    }
-  }, []);
 
   function onChange(ev) {
     const { name, value } = ev.target;
@@ -32,11 +22,8 @@ export default ({ idArticle }) => {
 
   function onSubmit(ev) {
     ev.preventDefault();
-    console.log(idArticle);
-    const method = idArticle ? "put" : "post";
-    const url = idArticle
-      ? `/blog/editor/article/update-post/${idArticle}`
-      : `/blog/editor/article/add-post`;
+    const method = "post";
+    const url = `/blog/editor/article/add-post`;
 
     const image = imageRef.current.files[0];
 
@@ -54,6 +41,7 @@ export default ({ idArticle }) => {
         authorization: `Bearer ${token}`,
       },
     }).then((response) => {
+      alert('Artigo postado com sucesso!')
       navigate("/articles_page");
     });
   }

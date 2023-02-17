@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import Users from "./pages/User/Users";
-import SignIn from "./pages/Login/SignIn";
 import EditorLogin from "./pages/Login/Editor/SignIn";
 import AdminLogin from "./pages/Login/Admin/SignIn";
 import AddUser from "./pages/User/AddUser/AddUser";

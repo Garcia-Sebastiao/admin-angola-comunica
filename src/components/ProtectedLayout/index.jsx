@@ -1,6 +1,5 @@
 import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
-import { useAuth } from "../../hooks/useAuth";
-import SignIn from "../../pages/Login/SignIn";
+import SignIn from "../../pages/Login/Admin/SignIn";
 
 import Modal from "../UI/Modal/Modal";
 

@@ -53,7 +53,7 @@ export default () => {
 
         <img src={iconLogin} alt="login-logo" />
 
-        <form onSubmit={handleFormSubmit}>
+        <form autoComplete="off" onSubmit={handleFormSubmit}>
           <input
             placeholder="Nome"
             type="text"
@@ -75,7 +75,7 @@ export default () => {
           Login
         </button>
 
-        <Link to="/">Logar como admin.</Link>
+        <Link to="/">Clicar aqui para logar como admin.</Link>
       </main>
     </div>
   );
