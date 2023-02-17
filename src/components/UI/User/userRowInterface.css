@@ -1,0 +1,44 @@
+.user-state {
+  width: 5%;
+  padding-right: 1.7rem;
+}
+.user-name {
+  width: 20%;
+}
+.user-emial {
+  width: 35%;
+  padding-left: 0.5rem;
+}
+.admin-column {
+  width: 100%;
+}
+.main-page main .users-table tbody {
+  padding: 1rem 0;
+}
+.main-page main .users-table tbody .admin-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-page main .users-table tbody .admin-buttons button {
+  border: none;
+  height: 2.3rem;
+  width: 2.3rem;
+  font-size: 0.6rem;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #161616;
+}
+.main-page main .users-table tbody .admin-buttons button:hover {
+  transition: 0.4s ease-in;
+  filter: brightness(0.9);
+}
+.main-page main .users-table tbody .admin-buttons button img {
+  width: 30%;
+}

@@ -1,274 +1,123 @@
+/* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
+/*----------------- CSS -------------------*/
 import "./home.css";
+
+/*----------------- Images -------------------*/
+import logoHero from "../../assets/images/logo-hero.svg";
+import iconHome from "../../assets/images/icons-home.svg";
+import iconBlog from "../../assets/images/icons-blog.svg";
+import iconMessage from "../../assets/images/icons-message.svg";
+import iconNotification from "../../assets/images/icons-notification.svg";
+import iconUsers from "../../assets/images/icons-users.svg";
+
+/*-------------- Components --------------*/
+import Navbar from "../../components/UI/Navbar/Navbar";
 import Header from "../../components/UI/Header/Header";
-import Footer from "../../components/UI/Footer/Footer";
-import MiniArticle from "../../components/UI/Article/MiniArticle/MiniArticle";
+import Article from "../../components/UI/Article/Article";
+import CountCard from "../../components/UI/CountCard/CountCard";
+import Carrousel from "../../components/Carrousel/Carrousel";
+import Sidebar from "../../components/UI/Sidebar/Sidebar";
+import { api } from "../../services/api";
 
-import image from "../../assets/images/about-image.svg";
-import light from "../../assets/images/icons/light_mode.svg";
-import dark from "../../assets/images/icons/dark_mode.svg";
-import logoImage from "../../assets/images/logo-hero.svg";
-import Button from "../../components/UI/Button/SubmitButton/Button";
-import LinkButton from "../../components/UI/Button/LinkButton/Button";
-import ArticleShortcard from "../../components/UI/Article/ArticleShortcard/ArticleShortcard";
-import ArticleCard from "../../components/UI/Article/ArticleCard/ArticleCard";
+export default () => {
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
+  const [articles, setArticle] = useState([]);
 
-export default function Home() {
-  const [theme, setTheme] = useState("light");
-  const [articles, setArticles] = useState([]);
-  const [politics, setPolitic] = useState([]);
-  const [health, setHealth] = useState([]);
-  const [worlds, setWorld] = useState([]);
-  const themeState = localStorage.getItem("theme");
+  const params = {};
 
-  function switchTheme() {
-    if (theme == "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-    localStorage.setItem("theme", theme);
+  if (search) {
+    params.subtitle_like = search;
   }
 
   useEffect(() => {
-    //destaques
-    axios
-      .get("https://apiblogdb.onrender.com/blog/global/view_article_all")
-      .then((resp) => {
-        setArticles(resp.data);
-      });
+    api.get("https://apiblogdb.onrender.com/blog/global/view_article_all", {params}).then((response) => {
+      setArticle(response.data);
+    });
 
-    axios
-      .get("https://apiblogdb.onrender.com/blog/global/view_article_all")
-      .then((resp) => {
-        const datas = resp.data;
-        const arr = [];
-
-        for (const data of datas) {
-          if (data.category == "Política") {
-            arr.push(data);
-          }
-        }
-
-        setPolitic(arr.reverse());
-      });
-
-    axios
-      .get("https://apiblogdb.onrender.com/blog/global/view_article_all")
-      .then((resp) => {
-        const datas = resp.data;
-        const arr = [];
-
-        for (const data of datas) {
-          if (data.category == "Mundo") {
-            arr.push(data);
-          }
-        }
-
-        setWorld(arr.reverse());
-      });
-
-    axios
-      .get("https://apiblogdb.onrender.com/blog/global/view_article_all")
-      .then((resp) => {
-        const datas = resp.data;
-        const arr = [];
-
-        for (const data of datas) {
-          if (data.category == "Saúde") {
-            arr.push(data);
-          }
-        }
-
-        setHealth(arr.reverse());
-      });
-  }, []);
+    // axios.get("http://localhost:5000/articles", { params }).then((response) => {
+    //   setArticle(response.data);
+    // });
+  }, [search]);
 
   return (
-    <div className="home" data-theme={themeState}>
-      <Header>
-        <button onClick={switchTheme}>
-          {themeState == "light" ? (
-            <img src={light} alt="" />
-          ) : (
-            <img src={dark} alt="" />
-          )}{" "}
-        </button>
-      </Header>
+    <div className="main-page">
+      <aside className="menu-side">
+        <div>
+          <img className="logo-hero" src={logoHero} alt="logoImage" />
+        </div>
+
+        <Navbar>
+          <ul>
+            <li>
+              <Link to={`/home`}>
+                <a className="active">
+                  <img src={iconHome} alt="" />
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/articles_page`}>
+                <a>
+                  <img src={iconBlog} alt="" />
+                </a>
+              </Link>
+            </li>
+          </ul>
+
+          <ul>
+            <li>
+              <a href="/">
+                <img src={iconNotification} alt="" />
+              </a>
+            </li>
+          </ul>
+        </Navbar>
+      </aside>
 
       <main>
-        <section className="main-articles-section container">
-          <div className="main-articles">
-            {worlds.length > 0
-              ? worlds
-                  .slice(0, 1)
-                  .reverse()
-                  .map((article) => {
-                    return (
-                      <div className="main-article">
-                        <div className="image">
-                          <img
-                            src={`https://apiblogdb.onrender.com/blog/global/view_article/image/${
-                              article?.idArticle
-                            }`}
-                            alt={article?.idArticle}
-                          />
-                        </div>
+        <Header
+          title="Overview"
+          text="Tenha uma vista geral das oiperações realizadas."
+          state={true}
+          value={search}
+          onChange={(ev) => setSearch(ev.target.value)}
+        />
 
-                        <h2>
-                          <Link
-                            to={`/article_view/${
-                              article?.idArticle
-                            }`}
-                          >
-                            {article?.title}
-                          </Link>
-                        </h2>
+        <div className="counter-cards">
+          <CountCard
+            length={articles.length}
+            icon={iconBlog}
+            type={articles.length > 1 ? "Artigos postados" : "Artigo postado"}
+          />
 
-                        <p>{article?.subtitle}</p>
-                      </div>
-                    );
-                  })
-              : ""}
+          <CountCard 
+            length={users.length} 
+            icon={iconUsers} 
+            type="Usuários" 
+          />
+        </div>
 
-            <div className="mini-articles">
-              <MiniArticle category="Diversos" start={0} limit={1} />
-              <MiniArticle category="Mundo" start={0} limit={1} />
-              <MiniArticle category="Política" start={0} limit={1} />
-            </div>
-          </div>
-        </section>
+        <div className="recents-articles">
+          <h2>Artigos Recentes</h2>
 
-        <section className="last-news-section container">
-          <h2>Últimas Notícias</h2>
-
-          <div className="lasts-news">
-            {articles.length > 0
-              ? articles
-                  .slice(0, 7)
-                  .reverse()
-                  .map((article) => {
-                    return <ArticleCard article={article} />;
-                  })
-              : "Sem artigos disponíveis..."}
-          </div>
-        </section>
-
-        <section className="login-invite-section container">
-          <div className="invite-text">
-            <h2>Junte-se a nossa família e tenha acessos exclusivos.</h2>
-            <span>Crie sua conta.</span>
-          </div>
-
-          <LinkButton>
-            CRIAR CONTA
-            <img src="" alt="" />
-          </LinkButton>
-        </section>
-
-        <section className="politics-section container">
-          <div className="politic-section-header">
-            <h2>Política</h2>
-
-            <Link to="/politica">VER MAIS</Link>
-          </div>
-
-          <div className="articles">
-            {politics.length > 0
-              ? politics
-                  .slice(0, 7)
-                  .reverse()
-                  .map((article) => {
-                    return <ArticleCard article={article} />;
-                  })
-              : "Sem artigos disponíveis..."}
-          </div>
-        </section>
-
-        <section className="health-section container">
-          <div className="health-section-header">
-            <h2>Saúde</h2>
-
-            <Link to="/saude">VER MAIS</Link>
-          </div>
-
-          <div className="articles">
-            {health.length > 0
-              ? health
-                  .slice(0, 7)
-                  .reverse()
-                  .map((article) => {
-                    return <ArticleCard article={article} />;
-                  })
-              : "Sem artigos disponíveis..."}
-          </div>
-        </section>
-
-        <section className="shortcard-articles-section container">
-          <div className="shortcard-article">
-            <div className="shortcard-header">
-              <h2>DESPORTO</h2>
-              <Link to="/desporto">VER MAIS</Link>
-            </div>
-
-            <div className="shortcard-body">
-              <ArticleShortcard category="Desporto" />
-            </div>
-          </div>
-
-          <div className="shortcard-article">
-            <div className="shortcard-header">
-              <h2>DIVERSOS</h2>
-              <Link to="/desporto">VER MAIS</Link>
-            </div>
-
-            <div className="shortcard-body">
-              <ArticleShortcard category="Diversos" />
-            </div>
-          </div>
-
-          <div className="shortcard-article">
-            <div className="shortcard-header">
-              <h2>ECONOMIA</h2>
-              <Link to="/desporto">VER MAIS</Link>
-            </div>
-
-            <div className="shortcard-body">
-              <ArticleShortcard category="Economia" />
-            </div>
-          </div>
-        </section>
-
-        <section className="send-email-section container">
-          <div className="send-email-content">
-            <h2>Envie-nos uma mensagem</h2>
-
-            <p>
-              Entre em contacto conosco caso gostaria alguma matéria de seu
-              interesse fosse publicada aqui.
-            </p>
-            <form action="">
-              <textarea
-                name="email_content"
-                cols="30"
-                rows="5"
-                placeholder="Mensagem"
-              />
-            </form>
-
-            <Button type="submit">Enviar</Button>
-          </div>
-
-          <div className="image">
-            <img src={image} alt="Imagem Ilustrativa" />
-          </div>
-        </section>
+          <Carrousel>
+            {articles.length ? (
+              articles.map((article) => <Article article={article} />)
+            ) : (
+              <p style={{ color: "whitesmoke", filter: "brightness(0.9)" }}>
+                Sem Artigos...
+              </p>
+            )}
+          </Carrousel>
+        </div>
       </main>
 
-      <Footer image={logoImage} />
+      <Sidebar />
     </div>
   );
-}
+};

@@ -1,0 +1,21 @@
+.title-area
+{
+    padding: 0.7rem 1rem;
+    position: relative;
+}
+.title
+{
+    color: white;
+    font-size: 1.2rem;
+}
+.title::after
+{
+    content: "";
+    position: absolute;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: var(--mc-mandalay);
+}

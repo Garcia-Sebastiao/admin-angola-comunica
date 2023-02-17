@@ -14,8 +14,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  async function authenticate(formData) {
-    const response = await loginRequest(formData);
+  async function authenticate(formData, url) {
+    const response = await loginRequest(formData, url);
 
     const payload = { token: response.msg.access_token };
 

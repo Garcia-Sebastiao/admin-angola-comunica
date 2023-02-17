@@ -1,0 +1,30 @@
+.user-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+.user-form input{
+    width: 100%;
+    height: 2.5rem;
+    margin: 0.5rem;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--input-color);
+    padding: 1rem;
+    color: rgb(159, 159, 159);
+}
+.user-form
+{
+    width: 25rem;
+}
+.user-form input:nth-child(5)
+{
+    width: 25rem;
+    padding: 0.6rem;
+}
+.user-form button
+{
+    width: 100%;
+    margin: 1rem;
+}

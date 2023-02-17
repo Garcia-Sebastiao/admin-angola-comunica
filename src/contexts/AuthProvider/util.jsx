@@ -21,9 +21,9 @@ export function getUserLocalStorage() {
   return user ?? null;
 }
 
-export async function loginRequest(formData) {
+export async function loginRequest(formData, url) {
   try {
-    const request = await api.post("/blog/global/reader/login",  formData ,{
+    const request = await api.post(url,  formData ,{
       headers:{
         ...headers
       }

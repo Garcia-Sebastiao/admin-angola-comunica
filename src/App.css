@@ -1,0 +1,8 @@
+main
+{
+    overflow-x: hidden;
+}
+main::-webkit-scrollbar
+{
+    display: none;
+}

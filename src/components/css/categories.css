@@ -1,0 +1,22 @@
+.categories
+{
+    width: 100%;
+    padding-bottom: 3rem;
+}
+.categories ul{
+    display: inline-flex;
+}
+.categories ul li{
+    padding-right: 2rem;
+}
+.categories ul li a{
+    font-size: 0.8rem;
+    font-family: Poppins-Medium;
+    color: white;
+    filter: brightness(0.9);
+}
+.categories ul li a:hover
+{
+    filter: brightness(0.7);
+    transition: .4s ease-in;
+}

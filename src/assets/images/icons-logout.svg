@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M0 0L50 0L50 50L0 50L0 0Z" id="path_1" />
+    <clipPath id="mask_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="icons8_login_2" transform="matrix(-1 0 0 1 50 0)">
+    <path d="M0 0L50 0L50 50L0 50L0 0Z" id="Fundo" fill="#FFFFFF" fill-opacity="0" fill-rule="evenodd" stroke="none" />
+    <g clip-path="url(#mask_1)">
+      <path d="M25 6.25C16.2842 6.25 8.97217 12.2375 6.88477 20.3125L10.1074 20.3125C12.1033 13.9771 18.0176 9.375 25 9.375C33.6182 9.375 40.625 16.3818 40.625 25C40.625 33.6182 33.6182 40.625 25 40.625C18.0176 40.625 12.1033 36.0229 10.1074 29.6875L6.88477 29.6875C8.97217 37.7625 16.2842 43.75 25 43.75C35.3394 43.75 43.75 35.3394 43.75 25C43.75 14.6606 35.3394 6.25 25 6.25L25 6.25ZM23.9746 17.627L21.7285 19.873L25.293 23.4375L6.25 23.4375L6.25 26.5625L25.293 26.5625L21.7285 30.127L23.9746 32.373L30.2246 26.123L31.2988 25L30.2246 23.877L23.9746 17.627Z" id="Forma" fill="#FFFFFF" fill-rule="evenodd" stroke="none" />
+    </g>
+  </g>
+</svg>

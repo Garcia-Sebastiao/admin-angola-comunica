@@ -1,0 +1,14 @@
+.button
+{
+    border: none;
+    background-color: var(--mc-mandalay);
+    border-radius: 7px;
+    padding: 0.7rem 2rem; 
+    color: white;
+}
+.button:hover
+{
+    cursor: pointer;
+    transition: .3s;
+    filter: brightness(0.9);
+}

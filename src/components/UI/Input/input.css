@@ -1,0 +1,15 @@
+.input-text
+{
+    width: 100%;
+    height: 2.5rem;
+    margin: 0.5rem;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--input-color);
+    padding: 1rem;
+    color: rgb(159, 159, 159);
+}
+.input-text::placeholder
+{
+    color: var(--input-font);
+}

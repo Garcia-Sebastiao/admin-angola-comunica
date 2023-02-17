@@ -1,0 +1,34 @@
+.page-auth
+{
+    display: flex;
+    height: 100vh;
+}
+.page-auth aside
+{
+    flex: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--second-color);
+}
+.page-auth aside img
+{
+    width: 10rem;
+}
+.page-auth main
+{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.page-auth main img{
+    margin: 1rem 0;
+    width: 3rem;
+}
+.page-auth main img
+{
+    margin: 2rem;
+}

@@ -1,0 +1,24 @@
+td{
+    padding:  0.5rem 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.463);
+}
+.date-row
+{
+    width: 15%;
+}
+.categorie-row
+{
+    width: 17%;
+}
+.subtitle-row
+{
+    width: 49%;
+}
+.options-buttons
+ {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

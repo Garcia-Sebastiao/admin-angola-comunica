@@ -1,0 +1,19 @@
+.link
+{
+    margin-top: 2rem;
+}
+.link-component
+{
+    border: none;
+    background-color: var(--mc-mandalay);
+    border-radius: 7px;
+    padding: 0.7rem 2rem; 
+    color: white;
+    font-size: 0.9rem;
+}
+.link-component:hover
+{
+    cursor: pointer;
+    transition: .4s;
+    filter: brightness(0.9);
+}

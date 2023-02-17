@@ -1,35 +1,72 @@
-import React from "react";
-import {Route, Routes} from 'react-router-dom';
+/* eslint-disable import/no-anonymous-default-export */
+import React, { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
 
-/*------------------- Pages ---------------------*/
-import Home from './pages/Home/Home';
-import Login from "./pages/Visitor/Login/Login";
-import SignUp from './pages/Visitor/SignUp/SignUp';
-import World from "./pages/Article/Categories/World/World";
-import Sports from "./pages/Article/Categories/Sports/Sports"
-import Health from "./pages/Article/Categories/Health/Health";
-import Others from "./pages/Article/Categories/Others/Others";
-import Economy from "./pages/Article/Categories/Economy/Economy";
-import Politics from "./pages/Article/Categories/Politics/Politics";
-import ArticleView from "./pages/Article/ArticleView/Article"
-import Teste from './Teste';
+/*----------------- Imports -------------------*/
+import "./App.css";
+import Home from "./pages/Home/Home";
+import Users from "./pages/User/Users";
+import SignIn from "./pages/Login/SignIn";
+import EditorLogin from "./pages/Login/Editor/SignIn";
+import AdminLogin from "./pages/Login/Admin/SignIn";
+import AddUser from "./pages/User/AddUser/AddUser";
+import EditUser from "./pages/User/EditUser/EditUser";
+import ArticlesPage from "./pages/Articles/ArticlesPage";
+import AddArticle from "./pages/Articles/AddArticle/AddArticle";
+import EditArticle from "./pages/Articles/EditArticle/EditArticle";
+import { AuthProvider } from "./contexts/AuthProvider";
+import { ProtectedLayout } from "./components/ProtectedLayout/index";
 
-/*------------- CSS -------------*/
-import './App.css';
+export default () => {
+  return (
+    <div>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<AdminLogin />} />
+          <Route path="/editor_login" element={<EditorLogin />} />
 
-const App = () => (
-    <Routes>
-        <Route path="/" element={< Home/>}/>
-        <Route path="/login" element={< Login/>}/>
-        <Route path="/mundo" element={< World/>}/>
-        <Route path="/saude" element={< Health/>}/>
-        <Route path="/diversos" element={< Others/>}/>
-        <Route path="/desporto" element={< Sports/>}/>
-        <Route path="/economia" element={< Economy/>}/>
-        <Route path="/cadastrar" element={< SignUp/>}/>
-        <Route path="/politica" element={< Politics/>}/>
-        <Route path="/article_view/:id" element={< ArticleView/>}/>
-        <Route path="/teste" element={<Teste/>}/>
-    </Routes>
-);
-export default App;
+          <Route
+            path="/home"
+            element={
+              <ProtectedLayout>
+                <Home />
+              </ProtectedLayout>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedLayout>
+                <Home />
+              </ProtectedLayout>
+            }
+          />
+          <Route
+            path="/articles_page"
+            element={
+              <ProtectedLayout>
+                <ArticlesPage />
+              </ProtectedLayout>
+            }
+          />
+          <Route
+            path="/edit_articles/:idArticle"
+            element={
+              <ProtectedLayout>
+                <EditArticle />
+              </ProtectedLayout>
+            }
+          />
+          <Route
+            path="/add_articles"
+            element={
+              <ProtectedLayout>
+                <AddArticle />
+              </ProtectedLayout>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </div>
+  );
+};

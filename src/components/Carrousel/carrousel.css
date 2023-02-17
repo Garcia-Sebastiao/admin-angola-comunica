@@ -1,0 +1,23 @@
+.carrousel
+{
+    width: 100%;
+    display: flex;  
+    overflow-x: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    scroll-behavior: smooth;
+    padding: 2rem 0;
+}
+.carrousel::-webkit-scrollbar
+{
+    display: none;
+}
+.buttons
+{
+    margin-top: 2rem;
+}
+.buttons button
+{
+    border: none;
+    background: none;
+}

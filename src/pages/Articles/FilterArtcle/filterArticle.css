@@ -1,0 +1,223 @@
+.active
+{
+    background-color: var(--mc-mandalay);
+}
+
+.main-page
+{
+    display: flex;
+    height: 100vh;
+}
+
+/*-------------------- Navbar-side --------------------*/
+.main-page .menu-side
+{
+    flex: 0.1;
+    padding: 1.5rem 0.7rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--second-color);
+}
+.main-page .menu-side .logo-hero{
+    width: 4rem;
+}
+.main-page .menu-side div
+{
+    flex: 1;
+}
+.main-page .menu-side nav
+{
+    flex: 3;
+}
+.main-page .menu-side nav ul
+{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-page .menu-side nav ul li
+{
+    padding: 0.7rem;
+}
+.main-page .menu-side nav ul li a
+{
+    padding: 0.5rem;
+    display: flex;
+    border-radius: 5px;
+}
+.main-page .menu-side nav ul li a img
+{
+    width: 1.1rem;
+}
+.main-page .menu-side nav ul li:nth-child(2) a img
+{
+    width: 1.3rem;
+}
+
+/*-------------------- Main --------------------*/
+.main-page main
+{
+    flex: 1.6; 
+    padding: 2.5rem;
+}
+.main-page main h3
+{
+    color: var(--mc-mandalay);
+    font-family: Poppins-Semi-Bold;
+    font-size: 1.1rem;
+    padding: 3rem 0;
+    filter: brightness(0.9);
+}
+.main-page main .articles-table
+{
+    background-color: var(--second-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px #AD7F2108;
+}
+.main-page main .articles-table
+{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px #AD7F2108;
+}
+.main-page main .articles-table thead{
+    background-color: #1d1d1d67;
+}
+.main-page main .articles-table thead tr{
+    display: flex;
+    justify-content: flex-start;
+}
+.main-page main .articles-table thead th{
+    padding: 1rem;
+    color: white;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: normal;
+    filter: brightness(0.9);
+}
+.main-page main .articles-table thead .date-column
+{
+    width: 15%;
+}
+.main-page main .articles-table thead .categorie-column
+{
+    width: 17%;
+}
+.main-page main .articles-table thead .title-column
+{
+    width: 49%;
+}
+.main-page main .articles-table tbody
+{
+   padding: 1rem 0;
+}
+.main-page main .articles-table tbody .articles-buttons button
+{
+    border: none;
+    height: 2.3rem;
+    width: 2.3rem;
+    font-size: 0.6rem;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    outline: none;
+    cursor: pointer;
+    background-color: #161616;
+    color: white;
+}
+.main-page main .button
+{
+    margin-top: 1rem;
+}
+/*-------------------- Users-side --------------------*/
+.main-page .users-side
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    flex: 0.35;
+    background-color: var(--second-color);
+}
+.main-page .users-side h2
+{
+    padding-top: 1.5rem;
+    color: white;
+    filter: brightness(0.9);
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+.main-page .users-side .user-task
+{
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    filter: brightness(0.6);
+}
+.main-page .users-side .online-user
+{
+    width: 45%;
+    margin-top: 3rem;
+    border-radius: 50%;
+}
+.main-page .users-side span:nth-child(4)
+{
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    filter: brightness(0.95);
+}
+.main-page .users-side .others-users 
+{
+    margin-top: 2rem;
+}
+.main-page .users-side .others-users h4
+{
+    margin: 1rem 0;
+    color: white;
+    font-weight: normal;
+    filter: brightness(0.9);
+}
+.main-page .users-side .others-users .users
+{
+    display: flex;
+    flex-direction: column;
+}
+.main-page .users-side .others-users .user
+{
+    margin: 0.7rem 0;
+}
+.main-page .users-side .others-users a
+{
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    height: 2.5rem;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background-color: var(--mc-mandalay);
+}
+.main-page .users-side .others-users a:hover
+{
+    filter: brightness(0.9);
+    transition: .4s;
+}
+.main-page .users-side .logoff
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    filter: brightness(0.9);
+    font-size: 0.9rem;
+}
+.main-page .users-side .logoff:hover
+{
+    filter: brightness(0.8);
+    transition: .3s;
+}

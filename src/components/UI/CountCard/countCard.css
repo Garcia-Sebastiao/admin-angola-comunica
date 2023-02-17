@@ -1,0 +1,27 @@
+.count-card
+{
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 10px;
+    height: 6.5rem;
+    background-color: var(--input-color);
+    background-blend-mode: normal;
+}
+.count-card .text-count
+{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--mc-mandalay);
+}
+.count-card .text-count span
+{
+    font-size: 2rem;
+    font-family: Asap-Semi-Bold;
+}
+.count-card img{
+    width: 2.5rem;
+}

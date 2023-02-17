@@ -1,0 +1,90 @@
+
+/*-------------------- Users-side --------------------*/
+.users-side
+{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--second-color);
+}
+.users-side h2
+{
+    padding-top: 1.5rem;
+    color: white;
+    filter: brightness(0.9);
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+.users-side .user-task
+{
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    filter: brightness(0.6);
+}
+.users-side .online-user
+{
+    width: 45%;
+    margin-top: 3rem;
+    border-radius: 50%;
+}
+.users-side span:nth-child(4)
+{
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    filter: brightness(0.95);
+}
+.main-page .users-side .others-users 
+{
+    margin-top: 2rem;
+}
+.users-side .others-users h4
+{
+    margin: 1rem 0;
+    color: white;
+    font-weight: normal;
+    filter: brightness(0.9);
+}
+.users-side .others-users .users
+{
+    display: flex;
+    flex-direction: column;
+}
+.users-side .others-users .user
+{
+    margin: 0.7rem 0;
+}
+.users-side .others-users a
+{
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    color: white;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background-color: var(--mc-mandalay);
+}
+.users-side .others-users a:hover
+{
+    filter: brightness(0.9);
+    transition: .4s;
+}
+.users-side .logoff
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    filter: brightness(0.9);
+    font-size: 0.9rem;
+}
+.users-side .logoff:hover
+{
+    filter: brightness(0.8);
+    transition: .3s;
+}

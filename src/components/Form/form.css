@@ -1,0 +1,72 @@
+.main-page main .new-article-form
+{
+    display: flex;
+    justify-content: space-between;
+}
+.main-page main .new-article-form div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    min-width: 29rem;
+}
+.main-page main .new-article-form div input{
+    width: 100%;
+    height: 2.5rem;
+    margin: 0.5rem;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--input-color);
+    padding: 1rem;
+    color: rgb(159, 159, 159);
+}
+.main-page main .new-article-form div select{
+    width: 100%;
+    border: none;
+    height: 2.5rem;
+    border-radius: 7px;
+    padding: 0 0.5rem;
+    color: var(--input-font);
+    background-color: var(--input-color);
+}
+.main-page main .new-article-form div input::placeholder
+{
+    color: var(--input-font);
+}
+.main-page main .new-article-form div:nth-child(1)
+{
+    padding-right: 0.5rem;
+}
+.main-page main .new-article-form div:nth-child(2)
+{
+    padding-left: 0.5rem;
+}
+.main-page main .new-article-form div:nth-child(1) .description
+{
+    width: 100%;
+    height: 6.7rem;
+    margin: 0.5rem;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--input-color);
+    padding: 1rem;
+    color: rgb(159, 159, 159);
+} 
+.main-page main .new-article-form div:nth-child(1) .description::placeholder
+{
+    color: var(--input-font);
+}
+.main-page main .new-article-form div:nth-child(1) .description::-webkit-scrollbar
+{
+    display: none;
+}
+.main-page main .new-article-form div:nth-child(2) input:nth-child(3)
+{
+    padding: 0.6rem;
+}
+.main-page main .new-article-form div:nth-child(2) .button
+{
+    width: 100%;
+    margin: 1rem 0;
+}
