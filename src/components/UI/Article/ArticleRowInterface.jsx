@@ -28,7 +28,6 @@ const ArticleRowInterface = ({ article }) => {
       })
       .then((response) => {
         navigate("/articles_page");
-        window.location.href = window.location.href;
       });
 
     setIsOpen(false);
