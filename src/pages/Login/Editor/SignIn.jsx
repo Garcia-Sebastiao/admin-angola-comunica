@@ -37,7 +37,6 @@ export default () => {
       await auth.authenticate(form, "/blog/editor/login");
 
       navigate("/home");
-      window.location.href = window.location.href;
     } catch (error) {
       alert("Usuário ou senha inválidos");
     }
