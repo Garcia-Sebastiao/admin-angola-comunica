@@ -2,7 +2,7 @@ import User from "../User/User";
 import React from "react";
 import "./sidebar.css";
 import iconLogout from "../../../assets/images/icons-logout.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 
 export default () => {
@@ -32,7 +32,7 @@ export default () => {
             
           </div>
 
-          <a href="/users_page">Ver todos</a>
+          <Link to={`/users_page`}>Ver Todos</Link>
         </div>
 
         <a onClick={handleLogout} className="logoff">

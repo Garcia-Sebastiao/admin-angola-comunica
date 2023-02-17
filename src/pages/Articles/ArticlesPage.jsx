@@ -129,11 +129,9 @@ export default () => {
         <div className="others-users">
           <h4>Outros Usuários</h4>
 
-          <div className="users">
-            
-          </div>
+          <div className="users"></div>
 
-          <a href="/users_page">Ver todos</a>
+          <Link to={`/users_page`}>Ver Todos</Link>
         </div>
 
         <a className="logoff" href="/">
