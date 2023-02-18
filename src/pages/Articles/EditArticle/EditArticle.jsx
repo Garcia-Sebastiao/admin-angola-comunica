@@ -12,6 +12,8 @@ import logoHero from "../../../assets/images/logo-hero.svg";
 import iconHome from "../../../assets/images/icons-home.svg";
 import menu from "../../../assets/images/icons/icons8_menu.svg";
 import close from "../../../assets/images/icons/icons8_close.svg";
+import left from "../../../assets/images/icons/icons8_left_1.svg";
+import right from "../../../assets/images/icons/icons8_right.svg";
 import iconBlog from "../../../assets/images/icons-blog.svg";
 import iconNotification from "../../../assets/images/icons-notification.svg";
 
