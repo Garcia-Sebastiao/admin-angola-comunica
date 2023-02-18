@@ -1,7 +1,7 @@
 td{
     padding:  0.5rem 1rem;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.463);
+    color: var(--response);
 }
 .date-row
 {
@@ -80,4 +80,15 @@ td{
 .modal .modal-buttons .denyButton:hover
 {
     filter: brightness(0.7);
+}
+
+@media screen and (max-width: 820px){
+    .articles-buttons
+    {
+        flex-wrap: wrap;
+    }
+    .articles-buttons button
+    {
+        margin: 1rem 0;
+    }
 }
