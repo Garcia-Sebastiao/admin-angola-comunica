@@ -6,7 +6,7 @@ import './navbar.css';
 
 export default (props) => (
     <>
-        <nav>
+        <nav className={props.className}>
             {props.children}
         </nav>
     </>

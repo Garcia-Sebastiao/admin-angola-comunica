@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { api } from "../../services/api";
 import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
-export default ({  }) => {
+export default ({}) => {
   const form = new FormData();
   const imageRef = useRef(null);
   const navigate = useNavigate();
@@ -41,13 +41,13 @@ export default ({  }) => {
         authorization: `Bearer ${token}`,
       },
     }).then((response) => {
-      alert('Artigo postado com sucesso!')
+      alert("Artigo postado com sucesso!");
       navigate("/articles_page");
     });
   }
 
   return (
-    <>
+    <div className="add-article-form">
       <form
         onSubmit={onSubmit}
         method="POST"
@@ -121,6 +121,6 @@ export default ({  }) => {
           <Button name="btnSetArticle" value="Postar" />
         </div>
       </form>
-    </>
+    </div>
   );
 };

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
+import { Link } from "react-router-dom";
 import iconSearch from "../../../assets/images/icons-search.svg";
 
 /*----------------- CSS -------------------*/
@@ -15,10 +16,9 @@ export default (props) => (
 
       {props.state ? (
         <div className="search-area">
-          <input type="search" name="search" placeholder="Procurar Artigo" value={props.value} onChange={props.onChange} />
-          <button>
+          <Link to={`pesquisar_artigo`} className="search-button">
             <img src={iconSearch} alt="" />
-          </button>
+          </Link>
         </div>
       ) : (
         ""

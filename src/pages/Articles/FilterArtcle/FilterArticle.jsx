@@ -10,6 +10,8 @@ import "./ilterArticle.css";
 import logoHero from "../assets/images/logo-hero.svg";
 import iconHome from "../assets/images/icons-home.svg";
 import iconBlog from "../assets/images/icons-blog.svg";
+import menu from "../../../assets/images/icons/icons8_menu.svg";
+import close from "../../../assets/images/icons/icons8_close.svg";
 import authorImage from "../assets/images/user-photo.svg";
 import iconLogout from "../assets/images/icons-logout.svg";
 import iconNotification from "../assets/images/icons-notification.svg";
@@ -26,6 +28,11 @@ export default () => {
   const [categorie, setCategorie] = useState([]);
   const [articles, setArticle] = useState([]);
   const { id } = useParams();
+  const [state, setState] = useState(false);
+
+  function navToogle() {
+    !state ? setState(true) : setState(false);
+  }
 
   useEffect(() => {
     axios
@@ -44,7 +51,11 @@ export default () => {
           <img className="logo-hero" src={logoHero} alt="logoImage" />
         </div>
 
-        <Navbar>
+        <div className="nav-toggle">
+          <img onClick={navToogle} src={state ? close : menu} alt="" />
+        </div>
+
+        <Navbar className={state ? "appear" : ""}>
           <ul>
             <li>
               <Link to={`/home`}>

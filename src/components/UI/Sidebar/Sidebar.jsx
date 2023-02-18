@@ -5,7 +5,7 @@ import iconLogout from "../../../assets/images/icons-logout.svg";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 
-export default () => {
+export default (props) => {
   const navigate = useNavigate();
   const auth = useAuth();
   const handleLogout = async () => {
@@ -18,7 +18,7 @@ export default () => {
   };
   return (
     <div>
-      <aside className="users-side">
+      <aside className={`${props.className} users-side`}>
         <h2>Bem-vindo de volta</h2>
         <span className="user-task">{auth.email}</span>
 

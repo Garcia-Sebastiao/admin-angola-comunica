@@ -1,87 +1,96 @@
-.page-auth
-{
-    display: flex;
-    height: 100vh;
+.page-auth {
+  display: flex;
+  height: 100vh;
 }
-.page-auth aside
-{
-    flex: 0.7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--second-color);
+.page-auth .aside {
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--second-color);
 }
-.page-auth aside img
-{
-    width: 10rem;
+.page-auth aside img {
+  width: 10rem;
 }
-.page-auth main
-{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.page-auth main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.page-auth main img{
-    margin: 1rem 0;
-    width: 3rem;
+.page-auth main img {
+  margin: 1rem 0;
+  width: 3rem;
 }
-.page-auth main form{
-    display: flex;
+.page-auth main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-auth main img {
+  margin: 2rem;
+}
+.page-auth main .form-box {
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.page-auth main form {
+  width: 100%;
+}
+.page-auth main form input {
+  width: 100%;
+  height: 2.5rem;
+  margin: 0.5rem;
+  border-radius: 7px;
+  border: none;
+  background-color: var(--input-color);
+  padding: 1rem;
+  color: rgb(159, 159, 159);
+}
+.page-auth main form input::placeholder {
+  color: var(--input-font);
+}
+.invalid {
+  width: 50%;
+}
+.page-auth main button {
+  width: 100%;
+  margin: 1rem;
+  border: none;
+  background-color: var(--mc-mandalay);
+  border-radius: 7px;
+  padding: 0.7rem 2rem;
+  color: white;
+}
+.page-auth main button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(0.9);
+}
+.page-auth main button:disabled {
+  filter: brightness(0.5);
+}
+.page-auth main a {
+  font-size: 0.9rem;
+  color: white;
+  filter: brightness(0.9);
+}
+
+@media screen and (max-width: 820px) {
+  .page-auth {
     flex-direction: column;
-    align-items: center;
-}
-.page-auth main img
-{
-    margin: 2rem;
-}
-.page-auth main form
-{
-    width: 25rem;
-}
-.page-auth main form input
-{
-    width: 100%;
-    height: 2.5rem;
-    margin: 0.5rem;
-    border-radius: 7px;
-    border: none;
-    background-color: var(--input-color);
+  }
+  .page-auth .aside {
+    flex: 0.2;
+  }
+  .page-auth .aside img {
+    width: 8rem;
+  }
+  .page-auth main .form-box {
     padding: 1rem;
-    color: rgb(159, 159, 159);
-}
-.page-auth main form input::placeholder
-{
-    color: var(--input-font);
-}
-.invalid{
-    width: 50%;
-}
-.page-auth main button
-{
-    width: 25rem;
-    margin: 1rem;
-    border: none;
-    background-color: var(--mc-mandalay);
-    border-radius: 7px;
-    padding: 0.7rem 2rem; 
-    color: white;
-}
-.page-auth main button:hover
-{
-    cursor: pointer;
-    transition: .3s;
-    filter: brightness(0.9);
-}
-.page-auth main button:disabled
-{
-    filter: brightness(0.5);
-}
-.page-auth main a 
-{
-    font-size: 0.9rem;
-    color: white;
-    filter: brightness(0.9);
+  }
 }

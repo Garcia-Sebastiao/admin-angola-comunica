@@ -10,9 +10,9 @@ import "./editArticle.css";
 /*----------------- Images -------------------*/
 import logoHero from "../../../assets/images/logo-hero.svg";
 import iconHome from "../../../assets/images/icons-home.svg";
+import menu from "../../../assets/images/icons/icons8_menu.svg";
+import close from "../../../assets/images/icons/icons8_close.svg";
 import iconBlog from "../../../assets/images/icons-blog.svg";
-import authorImage from "../../../assets/images/user-photo.svg";
-import iconLogout from "../../../assets/images/icons-logout.svg";
 import iconNotification from "../../../assets/images/icons-notification.svg";
 
 /*-------------- Components --------------*/
@@ -21,6 +21,7 @@ import Button from "../../../components/UI/Button/Button";
 import Header from "../../../components/UI/Header/Header";
 import Navbar from "../../../components/UI/Navbar/Navbar";
 import { api } from "../../../services/api";
+import Sidebar from "../../../components/UI/Sidebar/Sidebar";
 
 export default () => {
   const { idArticle } = useParams();
@@ -29,6 +30,17 @@ export default () => {
   const imageRef = useRef(null);
   const [values, setValues] = useState([]);
   const token = getUserLocalStorage().token;
+  const [state, setState] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
+
+  function navToogle() {
+    !state ? setState(true) : setState(false);
+    sidebar ? setSidebar(false) : "";
+  }
+  function sidebarToggle() {
+    !sidebar ? setSidebar(true) : setSidebar(false);
+    state ? setState(false) : "";
+  }
 
   function onChange(ev) {
     const { name, value } = ev.target;
@@ -77,7 +89,17 @@ export default () => {
           <img className="logo-hero" src={logoHero} alt="logoImage" />
         </div>
 
-        <Navbar>
+        <div className="nav-options">
+          <div className="side-toggle">
+            <img onClick={sidebarToggle} src={sidebar ? right : left} alt="" />
+          </div>
+
+          <div className="nav-toggle">
+            <img onClick={navToogle} src={state ? close : menu} alt="" />
+          </div>
+        </div>
+
+        <Navbar className={state ? "appear" : ""}>
           <ul>
             <li>
               <Link to={`/home`}>
@@ -111,107 +133,94 @@ export default () => {
           text="Gerencie os seus artigos com as operações disponíveis."
         />
 
-        <h3>Editar Artigo</h3>
-
-        <form
-          onSubmit={onSubmit}
-          method="POST"
-          enctype="multipart/form-data"
-          className="new-article-form"
-          autoComplete="off"
-          action=""
+        <h3
+          style={{
+            fontFamily: "Poppins-Semi-Bold",
+          }}
         >
-          <div>
-            <input
-              name="title"
-              placeholder="Título"
-              onChange={onChange}
-              value={values.title}
-              required
-            />
+          Editar Artigo
+        </h3>
 
-            <input
-              name="category"
-              placeholder="Categoria"
-              list="categories"
-              onChange={onChange}
-              required
-              value={values.category}
-            />
-            <datalist id="categories">
-              <option value="Mundo" />
-              <option value="Desporto" />
-              <option value="Política" />
-              <option value="Economia" />
-              <option value="Saúde" />
-              <option value="Diversos" />
-            </datalist>
+        <div className="add-article-form">
+          <form
+            onSubmit={onSubmit}
+            method="POST"
+            enctype="multipart/form-data"
+            className="new-article-form"
+            autoComplete="off"
+            action=""
+          >
+            <div>
+              <input
+                name="title"
+                placeholder="Título"
+                onChange={onChange}
+                value={values.title}
+                required
+              />
 
-            <textarea
-              rows="10"
-              cols="30"
-              name="body"
-              className="description"
-              placeholder="Descrição"
-              onChange={onChange}
-              value={values.body}
-              required
-            />
-          </div>
+              <input
+                name="category"
+                placeholder="Categoria"
+                list="categories"
+                onChange={onChange}
+                required
+                value={values.category}
+              />
+              <datalist id="categories">
+                <option value="Mundo" />
+                <option value="Desporto" />
+                <option value="Política" />
+                <option value="Economia" />
+                <option value="Saúde" />
+                <option value="Diversos" />
+              </datalist>
 
-          <div>
-            <input
-              name="subtitle"
-              placeholder="Subtítulo"
-              onChange={onChange}
-              value={values.subtitle}
-              required
-            />
+              <textarea
+                rows="10"
+                cols="30"
+                name="body"
+                className="description"
+                placeholder="Descrição"
+                onChange={onChange}
+                value={values.body}
+                required
+              />
+            </div>
 
-            <input
-              name="font"
-              placeholder="Fontes"
-              onChange={onChange}
-              value={values.font}
-              required
-            />
+            <div>
+              <input
+                name="subtitle"
+                placeholder="Subtítulo"
+                onChange={onChange}
+                value={values.subtitle}
+                required
+              />
 
-            <input
-              ref={imageRef}
-              type="file"
-              placeholder="Fotos"
-              accept="image/*"
-              multiple={false}
-              required
-            />
+              <input
+                name="font"
+                placeholder="Fontes"
+                onChange={onChange}
+                value={values.font}
+                required
+              />
 
-            <Button name="btnSetArticle" value="Atualizar" />
-          </div>
-        </form>
+              <input
+                ref={imageRef}
+                type="file"
+                placeholder="Fotos"
+                accept="image/*"
+                multiple={false}
+                required
+              />
+
+              <Button name="btnSetArticle" value="Atualizar" />
+            </div>
+          </form>
+        </div>
       </main>
 
-      <aside className="users-side">
-        <h2>Bem-vindo de volta</h2>
-        <span className="user-task">Admin</span>
-
-        <img className="online-user" src={authorImage} alt="userImage" />
-        <span>Garcia Pedro</span>
-
-        <div className="others-users">
-          <h4>Outros Usuários</h4>
-
-          <div className="users">
-            <User />
-          </div>
-
-          <a href="/users">Ver todos</a>
-        </div>
-
-        <a className="logoff" href="/">
-          <img src={iconLogout} alt="logout" />
-          Logout
-        </a>
-      </aside>
+      <Sidebar className={sidebar ? 'appear' : ''}/>
     </div>
   );
 };

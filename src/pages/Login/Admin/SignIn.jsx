@@ -44,7 +44,7 @@ export default () => {
 
   return (
     <div className="page-auth">
-      <aside>
+      <aside className="aside">
         <img src={logoHero} alt="logoImage" />
       </aside>
 
@@ -54,27 +54,29 @@ export default () => {
         <span></span>
         <img src={iconLogin} alt="login-logo" />
 
-        <form autoComplete="off" onSubmit={handleFormSubmit}>
-          <input
-            placeholder="Nome"
-            type="text"
-            name="username"
-            required
-            onChange={handleOnChange}
-            value={values.username}
-          />
-          <input
-            placeholder="Senha"
-            type="password"
-            name="password"
-            onChange={handleOnChange}
-            value={values.password}
-          />
-        </form>
+        <div className="form-box">
+          <form autoComplete="off" onSubmit={handleFormSubmit}>
+            <input
+              placeholder="Nome"
+              type="text"
+              name="username"
+              required
+              onChange={handleOnChange}
+              value={values.username}
+            />
+            <input
+              placeholder="Senha"
+              type="password"
+              name="password"
+              onChange={handleOnChange}
+              value={values.password}
+            />
+          </form>
 
-        <button onClick={handleFormSubmit} type="submit">
-          Login
-        </button>
+          <button onClick={handleFormSubmit} type="submit">
+            Login
+          </button>
+        </div>
 
         <Link to="/editor_login">Clique aqui para logar como editor.</Link>
       </main>

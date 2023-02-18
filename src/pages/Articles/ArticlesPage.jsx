@@ -8,6 +8,12 @@ import "./articlesPage.css";
 
 /*----------------- Images -------------------*/
 import logoHero from "../../assets/images/logo-hero.svg";
+import menu from "../../assets/images/icons/icons8_menu.svg";
+import light from "../../assets/images/icons/light_mode.svg";
+import dark from "../../assets/images/icons/dark_mode.svg";
+import close from "../../assets/images/icons/icons8_close.svg";
+import left from "../../assets/images/icons/icons8_left_1.svg";
+import right from "../../assets/images/icons/icons8_right.svg";
 import iconHome from "../../assets/images/icons-home.svg";
 import iconBlog from "../../assets/images/icons-blog.svg";
 import authorImage from "../../assets/images/user-photo.svg";
@@ -15,17 +21,38 @@ import iconLogout from "../../assets/images/icons-logout.svg";
 import iconNotification from "../../assets/images/icons-notification.svg";
 
 /*-------------- Components --------------*/
-import User from "../../components/UI/User/User";
 import Navbar from "../../components/UI/Navbar/Navbar";
 import Header from "../../components/UI/Header/Header";
 import ArticleRowInterface from "../../components/UI/Article/ArticleRowInterface";
-import Categories from "../../components/Categories";
 import LinkComponent from "../../components/LinkComponent";
 import { api } from "../../services/api";
+import Sidebar from "../../components/UI/Sidebar/Sidebar";
 
 export default () => {
   const [search, setSearch] = useState("");
   const [articles, setArticle] = useState([]);
+  const [state, setState] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
+  const [theme, setTheme] = useState("dark");
+  const themeState = localStorage.getItem("theme");
+
+  function switchTheme() {
+    if (theme == "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+    localStorage.setItem("theme", theme);
+  }
+
+  function navToogle() {
+    !state ? setState(true) : setState(false);
+    sidebar ? setSidebar(false) : "";
+  }
+  function sidebarToggle() {
+    !sidebar ? setSidebar(true) : setSidebar(false);
+    state ? setState(false) : "";
+  }
 
   const params = {};
 
@@ -42,14 +69,32 @@ export default () => {
   }, [search]);
 
   return (
-    <div className="main-page">
+    <div className="main-page dark-mode" data-theme={themeState}>
       <aside className="menu-side">
         <div>
           <img className="logo-hero" src={logoHero} alt="logoImage" />
         </div>
 
-        <Navbar>
+        <div className="nav-options">
+          <div className="side-toggle">
+            <img onClick={sidebarToggle} src={sidebar ? right : left} alt="" />
+          </div>
+
+          <div className="nav-toggle">
+            <img onClick={navToogle} src={state ? close : menu} alt="" />
+          </div>
+        </div>
+
+        <Navbar className={state ? "appear" : ""}>
           <ul>
+            <button className="switch-theme" onClick={switchTheme}>
+              {themeState == "light" ? (
+                <img src={light} alt="" />
+              ) : (
+                <img src={dark} alt="" />
+              )}{" "}
+            </button>
+            
             <li>
               <Link to={`/home`}>
                 <a>
@@ -85,7 +130,13 @@ export default () => {
           onChange={(ev) => setSearch(ev.target.value)}
         />
 
-        <h3>Artigos Postados</h3>
+        <h3
+          style={{
+            fontFamily: "Poppins-Semi-Bold",
+          }}
+        >
+          Artigos Postados
+        </h3>
 
         <table className="articles-table">
           <thead>
@@ -105,8 +156,6 @@ export default () => {
               <p
                 style={{
                   padding: "1rem",
-                  color: "rgba(255, 255, 255, 0.463)",
-                  fontSize: "0.8rem",
                 }}
                 className="warning"
               >
@@ -119,26 +168,7 @@ export default () => {
         <LinkComponent href="/add_articles" value="Adicionar" />
       </main>
 
-      <aside className="users-side">
-        <h2>Bem-vindo de volta</h2>
-        <span className="user-task">Admin</span>
-
-        <img className="online-user" src={authorImage} alt="userImage" />
-        <span>Garcia Pedro</span>
-
-        <div className="others-users">
-          <h4>Outros Usuários</h4>
-
-          <div className="users"></div>
-
-          <Link to={`/users_page`}>Ver Todos</Link>
-        </div>
-
-        <a className="logoff" href="/">
-          <img src={iconLogout} alt="logout" />
-          Logout
-        </a>
-      </aside>
+      <Sidebar className={sidebar ? "appear" : ""} />
     </div>
   );
 };
