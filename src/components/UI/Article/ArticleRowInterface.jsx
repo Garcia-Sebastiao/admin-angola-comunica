@@ -18,15 +18,24 @@ const ArticleRowInterface = ({ article }) => {
   const [modalisOpen, setIsOpen] = useState(false);
 
   async function deleteArticle(id) {
-    console.log(id);
+    let url = '';
 
+    if(localStorage.getItem('state') == 'Admin')
+    {
+      url = `/blog/admin/article/delete-post/${id}`
+    }
+    else{
+      url = `/blog/editor/article/delete-post/${id}`;
+    }
+    
     await api
-      .delete(`/blog/editor/article/delete-post/${id}`, {
+      .delete(url, {
         headers: {
           authorization: `Bearer ${token}`
         },
       })
       .then((response) => {
+        alert('Artigo deletado com sucesso');
         navigate("/articles_page");
       });
 

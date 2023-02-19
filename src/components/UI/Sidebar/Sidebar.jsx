@@ -11,6 +11,7 @@ export default (props) => {
   const handleLogout = async () => {
     try {
       auth.logout();
+      localStorage.setItem('state', ' ')
       navigate("/");
     } catch (error) {
       alert(error);

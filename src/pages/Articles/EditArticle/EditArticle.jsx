@@ -60,8 +60,17 @@ export default () => {
 
   function onSubmit(ev) {
     ev.preventDefault();
-    const method = idArticle ? "put" : "post";
-    const url = `/blog/editor/article/update-post/${idArticle}`;
+    const method = "put";
+    const url = ``;
+
+    if(localStorage.getItem('state') == 'Admin')
+    {
+      url = `/blog/admin/article/update-post/${idArticle}`;
+    }
+    else
+    {
+      url = `/blog/editor/article/update-post/${idArticle}`;
+    }
 
     const image = imageRef.current.files[0];
 

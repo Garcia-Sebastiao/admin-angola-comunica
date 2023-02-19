@@ -16,13 +16,15 @@ export default (props) => (
 
       {props.state ? (
         <div className="search-area">
-          <Link to={`pesquisar_artigo`} className="search-button">
+          <Link to={`/pesquisar_artigo`} className="search-button">
             <img src={iconSearch} alt="" />
           </Link>
         </div>
       ) : (
         ""
       )}
+
+      {props.children}
     </header>
   </>
 );

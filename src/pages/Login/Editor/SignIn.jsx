@@ -35,7 +35,7 @@ export default () => {
       form.append("password", values.password);
 
       await auth.authenticate(form, "/blog/editor/login");
-
+      localStorage.setItem('state', 'Editor');
       navigate("/home");
     } catch (error) {
       alert("Usuário ou senha inválidos");

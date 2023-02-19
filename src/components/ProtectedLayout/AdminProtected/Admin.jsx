@@ -1,21 +1,22 @@
-import { getUserLocalStorage } from "../../../contexts/AuthProvider/util";
-import SignIn from "../../../pages/Login/Admin/SignIn";
+import { useNavigate } from 'react-router-dom';
+import Home from '../../../pages/Home/Home';
 
 import Modal from "../../UI/Modal/Modal";
 
-export const ProtectedLayout = ({ children }) => {
-  const user = getUserLocalStorage();
+export const AdminProtected = ({ children }) => {
+  const admin = localStorage.getItem('state');
+  const navigate = useNavigate();
 
-  if (!user) {
+  if (admin != 'Admin') {
     return (
       <>
         <Modal
           type="Error"
           title="Acesso Negado!"
-          message="Você precisa fazer login."
+          message="Esta sessão é reservada ao administrador."
         />
 
-        <SignIn />
+        <Home />
       </>
     );
   }

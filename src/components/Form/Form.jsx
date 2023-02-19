@@ -23,7 +23,17 @@ export default ({}) => {
   function onSubmit(ev) {
     ev.preventDefault();
     const method = "post";
-    const url = `/blog/editor/article/add-post`;
+
+    let url = '';
+
+    if(localStorage.getItem('state') == 'Admin')
+    {
+      url = `/blog/admin/article/add-post`;
+    }
+    else
+    {
+      url = `/blog/editor/article/add-post`;
+    }
 
     const image = imageRef.current.files[0];
 

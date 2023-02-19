@@ -59,47 +59,45 @@
   filter: brightness(0.9);
 }
 .main-page main .users-table {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--second-color);
+  width: 100%;
+  text-align: left;
+  align-items: center;
   border-radius: 10px;
+  border-collapse: collapse;
+  border: 1px var(--border) solid;
+  box-shadow: 0px 0px 12px #ad7f2108;
+  background-color: var(--table-color);
   box-shadow: 0px 0px 12px #ad7f2108;
 }
 .main-page main .users-table thead {
-  background-color: #1d1d1d67;
+  width: 100%;
+  background-color: var(--table-head);
+  border-radius: 10px 10px 0px 0px;
 }
-.main-page main .articles-table thead tr {
-  display: flex;
-  justify-content: flex-start;
-}
-.main-page main .users-table thead th {
-  padding: 1rem;
+.main-page main .users-table th {
+  padding: 10px;
+  font-size: 1rem;
   color: white;
-  text-align: center;
   font-size: 0.9rem;
   font-weight: normal;
-  filter: brightness(0.9);
 }
-.main-page main .users-table thead .state-column {
-  width: 5%;
+.main-page main .users-table th:nth-child(1){
+  width: 300px;
 }
-.main-page main .users-table thead .admin-column {
-  width: 100%;
+.main-page main .users-table tbody tr td {
+  display: table-cell;
+  font-weight: 400;
+  padding: 10px;
+  min-width: 200px;
+  position: relative;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--response);
 }
-.main-page main .users-table thead .name-column {
-  width: 20%;
-}
-.main-page main .users-table thead .email-column {
-  width: 35%;
-}
-.main-page main .users-table tbody {
-  padding: 1rem 0;
-}
-.main-page main .users-table tbody td {
-  text-align: center;
-}
-.main-page main .button {
-  margin-top: 1rem;
+.main-page main .users-table tr {
+  border: none;
+  flex: 1;
+  display: table-row;
 }
 /*-------------------- Users-side --------------------*/
 .main-page .users-side {
@@ -213,20 +211,37 @@
   }
   .menu-side .nav-toggle img {
     width: 2rem;
-    transition: .4s;
+    transition: 0.4s;
   }
-  .menu-side .side-toggle{
+  .menu-side .side-toggle {
     position: absolute;
     top: 1.1rem;
     right: 1rem;
   }
-  .menu-side .side-toggle img{
+  .menu-side .side-toggle img {
     width: 2rem;
-    transition: .4s;
+    transition: 0.4s;
   }
   .main-page main {
     padding: 1rem;
     margin: 0;
     padding-top: 5rem;
+  }
+
+  .main-page main .users-table tbody tr td {
+    display: block;
+  }
+  .main-page main .users-table thead {
+    display: none;
+    border-radius: 10px;
+  }
+  .main-page main .users-table tbody tr {
+    padding: 10px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .main-page main .users-table tbody tr:last-child {
+    border: none;
   }
 }

@@ -1,35 +1,27 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import FormData from "form-data";
+import { api } from "../../services/api";
 
 /*----------------- CSS -------------------*/
 import "./userForm.css";
 
 /*-------------- Components --------------*/
-import Button from '../UI/Button/Button'
+import Button from "../UI/Button/Button";
+import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
 const initialValue = {
-    state: "",
-    name: "",
-    email: "",
-}
+  state: "",
+  name: "",
+  email: "",
+};
 
-export default ({ id }) => {
+export default () => {
   const [values, setValues] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (id) {
-      axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-        setValues(response.data);
-        console.log(response.data)
-      });
-    }
-    else
-    {
-        console.log(id)
-    }
-  }, []);
+  const form = new FormData();
+  const token = getUserLocalStorage().token;
+  const imageRef = useRef(null);
 
   function onChange(ev) {
     const { name, value } = ev.target;
@@ -40,24 +32,42 @@ export default ({ id }) => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    const method = id ? "put" : "post";
-    const url = id
-      ? `http://localhost:5000/users/${id}`
-      : `http://localhost:5000/users`;
+    const method = "post";
+    const url = `/blog/admin/create_account_editor`;
 
-    axios[method](url, values).then((response) => {
-      navigate("/users");
+    const image = imageRef.current.files[0];
+    const headersForm = form.getHeaders;
+
+    form.append('username', values.username);
+    form.append('email', values.email);
+    form.append('password', values.password);
+    form.append('image', image);
+
+    api[method](url, form, {
+      headers: {
+        ...headersForm,
+        authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      alert('Editor adicionado com sucesso!')
+      navigate("/users_page");
     });
   }
 
   return (
     <>
-      <form className="user-form" onSubmit={onSubmit} action="">
+      <form
+        className="user-form"
+        autoComplete="off"
+        encType="multipart/form-data"
+        onSubmit={onSubmit}
+        action=""
+      >
         <input
           placeholder="Nome"
-          name="name"
+          name="username"
           type="text"
-          value={values.name}
+          value={values.username}
           onChange={onChange}
         />
 
@@ -78,14 +88,13 @@ export default ({ id }) => {
         />
 
         <input
-          placeholder="Funcão"
-          name="state"
-          type="text"
-          value={values.state || "Editor"}
-          onChange={onChange}
+          ref={imageRef}
+          type="file"
+          placeholder="Fotos"
+          accept="image/*"
+          multiple={false}
+          required
         />
-
-        <input placeholder="Foto" type="file" />
 
         <Button value="Salvar" />
       </form>

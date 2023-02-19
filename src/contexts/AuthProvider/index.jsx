@@ -14,10 +14,10 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  async function authenticate(formData, url) {
+  async function authenticate(formData, url, username) {
     const response = await loginRequest(formData, url);
 
-    const payload = { token: response.msg.access_token };
+    const payload = { token: response.msg.access_token, username: username };
 
     setUser(payload);
     setUserLocalStorage(payload);

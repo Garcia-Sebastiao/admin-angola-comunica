@@ -1,4 +1,3 @@
-import axios from "axios";
 import ArticleRowInterface from "../UI/Article/ArticleRowInterface";
 import React, { useState, useEffect } from "react";
 import { api } from "../../services/api";

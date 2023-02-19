@@ -34,9 +34,10 @@ export default () => {
       form.append("username", values.username);
       form.append("password", values.password);
 
-      await auth.authenticate(form, "/blog/admin/login");
-
+      await auth.authenticate(form, "/blog/admin/login", values.username);
+      localStorage.setItem('state', 'Admin');
       navigate("/home");
+      
     } catch (error) {
       alert("Usuário ou senha inválidos");
     }

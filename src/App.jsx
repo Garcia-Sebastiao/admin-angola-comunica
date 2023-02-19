@@ -15,6 +15,8 @@ import AddArticle from "./pages/Articles/AddArticle/AddArticle";
 import EditArticle from "./pages/Articles/EditArticle/EditArticle";
 import { AuthProvider } from "./contexts/AuthProvider";
 import { ProtectedLayout } from "./components/ProtectedLayout/index";
+import { AdminProtected } from "./components/ProtectedLayout/AdminProtected/Admin";
+import SearchArticle from './pages/Articles/SearchArticle/SearchArticle';
 
 export default () => {
   return (
@@ -25,10 +27,10 @@ export default () => {
           <Route path="/editor_login" element={<EditorLogin />} />
 
           <Route
-            path="/home"
+            path="/pesquisar_artigo"
             element={
               <ProtectedLayout>
-                <Home />
+                <SearchArticle />
               </ProtectedLayout>
             }
           />
@@ -67,9 +69,25 @@ export default () => {
           <Route
             path="/users_page"
             element={
-              <ProtectedLayout>
+              <AdminProtected>
                 <Users />
-              </ProtectedLayout>
+              </AdminProtected>
+            }
+          />
+          <Route
+            path="/add_user"
+            element={
+              <AdminProtected>
+                <AddUser />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path="/edit_users"
+            element={
+              <AdminProtected>
+                <EditUser />
+              </AdminProtected>
             }
           />
         </Routes>

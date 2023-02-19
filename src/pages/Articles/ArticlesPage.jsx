@@ -16,8 +16,6 @@ import left from "../../assets/images/icons/icons8_left_1.svg";
 import right from "../../assets/images/icons/icons8_right.svg";
 import iconHome from "../../assets/images/icons-home.svg";
 import iconBlog from "../../assets/images/icons-blog.svg";
-import authorImage from "../../assets/images/user-photo.svg";
-import iconLogout from "../../assets/images/icons-logout.svg";
 import iconNotification from "../../assets/images/icons-notification.svg";
 
 /*-------------- Components --------------*/
@@ -94,7 +92,7 @@ export default () => {
                 <img src={dark} alt="" />
               )}{" "}
             </button>
-            
+
             <li>
               <Link to={`/home`}>
                 <a>
@@ -144,6 +142,7 @@ export default () => {
               <th className="date-column">Data</th>
               <th className="categorie-column">Categoria</th>
               <th className="title-column">Titulo do Artigo</th>
+              <th></th>
             </tr>
           </thead>
 

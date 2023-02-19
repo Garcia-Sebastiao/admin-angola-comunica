@@ -20,6 +20,7 @@
 :root {
   --main-color: #161616;
   --second-color: #111111;
+  --button: #161616;
   --table-color: #111111;
   --mc-mandalay: #ad7f21;
   --input-color: #1d1d1d;
@@ -27,6 +28,7 @@
   --input-font: #545454;
   --input-color2: #1d1d1d;
   --border-1: #54545450;
+  --table-border: #ffffff15;
   --title-color: white;
   --font-color: #f1f1f150;
   --text-color-1: #d1d1d180;
@@ -34,6 +36,7 @@
 }
 [data-theme="light"] {
   --main-color: white;
+  --button: var(--mc-mandalay);
   --table-color: white;
   --table-head: var(--mc-mandalay);
   --second-color: #161616;

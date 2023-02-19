@@ -10,6 +10,8 @@ import iconHome from "../../assets/images/icons-home.svg";
 import iconBlog from "../../assets/images/icons-blog.svg";
 import menu from "../../assets/images/icons/icons8_menu.svg";
 import close from "../../assets/images/icons/icons8_close.svg";
+import light from "../../assets/images/icons/light_mode.svg";
+import dark from "../../assets/images/icons/dark_mode.svg";
 import left from "../../assets/images/icons/icons8_left_1.svg";
 import right from "../../assets/images/icons/icons8_right.svg";
 import iconNotification from "../../assets/images/icons-notification.svg";
@@ -27,18 +29,29 @@ import LinkComponent from "../../components/LinkComponent";
 export default () => {
   const [state, setState] = useState(false);
   const [sidebar, setSidebar] = useState(false);
+  const [theme, setTheme] = useState("dark");
+  const themeState = localStorage.getItem("theme");
+
+  function switchTheme() {
+    if (theme == "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+    localStorage.setItem("theme", theme);
+  }
 
   function navToogle() {
     !state ? setState(true) : setState(false);
-    sidebar ? setSidebar(false) : '';
+    sidebar ? setSidebar(false) : "";
   }
   function sidebarToggle() {
     !sidebar ? setSidebar(true) : setSidebar(false);
-    state ? setState(false) : '';
+    state ? setState(false) : "";
   }
 
   return (
-    <div className="main-page">
+    <div className="main-page dark-mode" data-theme={themeState}>
       <aside className="menu-side">
         <div>
           <img className="logo-hero" src={logoHero} alt="logoImage" />
@@ -56,6 +69,14 @@ export default () => {
 
         <Navbar className={state ? "appear" : ""}>
           <ul>
+            <button className="switch-theme" onClick={switchTheme}>
+              {themeState == "light" ? (
+                <img src={light} alt="" />
+              ) : (
+                <img src={dark} alt="" />
+              )}{" "}
+            </button>
+
             <li>
               <Link to={`/home`}>
                 <a>
@@ -93,10 +114,10 @@ export default () => {
         <table className="users-table">
           <thead>
             <tr>
-              <th className="state-column">Função</th>
-              <th className="name-column">Nome</th>
-              <th className="email-column">Email</th>
-              <th className="admin-column"></th>
+              <th>Estado</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th></th>
             </tr>
           </thead>
 
@@ -108,7 +129,7 @@ export default () => {
         <LinkComponent href="/add_user" value="Adicionar" />
       </main>
 
-      <Sidebar className={sidebar ? 'appear' : ''}/>
+      <Sidebar className={sidebar ? "appear" : ""} />
     </div>
   );
 };

@@ -1,9 +1,16 @@
 header
 {
+    width: 100%;
     display: flex;
     align-items: start;
     justify-content: space-between;
     position: relative;
+    flex-wrap: wrap;
+}
+.header-text
+{
+    flex: 1;
+    min-width: 20rem;
 }
 .header-text h2
 {
@@ -37,8 +44,9 @@ header .search-area .search-button {
     align-items: center;
     justify-content: center;
     border-radius: 7px;
+    margin: 1rem 0;
 }
 header .search-area .search-button img
 {
-    width: 1.3rem;
+    width: 1.1rem;
 }

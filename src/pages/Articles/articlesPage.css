@@ -62,60 +62,42 @@
   filter: brightness(0.9);
 }
 .main-page main .articles-table {
-  background-color: var(--second-color);
+  width: 100%;
+  text-align: left;
+  align-items: center;
   border-radius: 10px;
-  box-shadow: 0px 0px 12px #ad7f2108;
-}
-.main-page main .articles-table {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--table-color);
-  border-radius: 10px;
-  box-shadow: 0px 0px 12px #ad7f2108;
+  border-collapse: collapse;
   border: 1px var(--border) solid;
+  box-shadow: 0px 0px 12px #ad7f2108;
+  background-color: var(--table-color);
+  box-shadow: 0px 0px 12px #ad7f2108;
 }
 .main-page main .articles-table thead {
+  width: 100%;
   background-color: var(--table-head);
   border-radius: 10px 10px 0px 0px;
-
 }
-.main-page main .articles-table thead tr {
-  display: flex;
-  justify-content: flex-start;
-}
-.main-page main .articles-table thead th {
-  padding: 1rem;
+.main-page main .articles-table th {
+  padding: 10px;
+  font-size: 1rem;
   color: white;
-  text-align: left;
   font-size: 0.9rem;
   font-weight: normal;
 }
-.main-page main .articles-table thead .date-column {
-  width: 15%;
+.main-page main .articles-table tbody tr td {
+  display: table-cell;
+  font-weight: 400;
+  padding: 10px;
+  min-width: 200px;
+  position: relative;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--response);
 }
-.main-page main .articles-table thead .categorie-column {
-  width: 17%;
-}
-.main-page main .articles-table thead .title-column {
-  width: 49%;
-}
-.main-page main .articles-table tbody {
-  padding: 1rem 0;
-}
-.main-page main .articles-table tbody .articles-buttons button {
+.main-page main .articles-table tr {
   border: none;
-  height: 2.3rem;
-  width: 2.3rem;
-  font-size: 0.6rem;
-  border-radius: 50%;
-  margin: 0 0.5rem;
-  outline: none;
-  cursor: pointer;
-  background-color: #161616;
-  color: white;
-}
-.main-page main .button {
-  margin-top: 1rem;
+  flex: 1;
+  display: table-row;
 }
 /*-------------------- Users-side --------------------*/
 .main-page .users-side {
@@ -245,5 +227,21 @@
     padding: 1rem;
     margin: 0;
     padding-top: 5rem;
+  }
+  .main-page main .articles-table tbody tr td {
+    display: block;
+  }
+  .main-page main .articles-table thead {
+    display: none;
+    border-radius: 10px;
+  }
+  .main-page main .articles-table tbody tr {
+    padding: 10px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .main-page main .articles-table tbody tr:last-child{
+    border: none;
   }
 }
