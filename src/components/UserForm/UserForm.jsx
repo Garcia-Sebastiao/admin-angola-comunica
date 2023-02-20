@@ -41,6 +41,7 @@ export default () => {
     form.append("username", values.username);
     form.append("email", values.email);
     form.append("password", values.password);
+    form.append("confirm_password", values.confirm_password);
     form.append("image", image);
 
     api[method](url, form, {
@@ -89,6 +90,14 @@ export default () => {
           />
 
           <input
+            placeholder="Confirmar Senha"
+            name="confirm_password"
+            type="password"
+            value={values.confirm_password}
+            onChange={onChange}
+          />
+
+          <input
             ref={imageRef}
             type="file"
             placeholder="Fotos"
@@ -98,7 +107,7 @@ export default () => {
           />
         </form>
 
-        <Button value="Salvar" />
+        <Button onClick={onSubmit} value="Salvar" />
       </div>
     </>
   );

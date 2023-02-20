@@ -5,6 +5,6 @@ import './button.css';
 
 export default (props) => (
     <>
-        <button className="button" type={props.type || 'submit'}>{props.value || 'Default'}</button>
+        <button  onClick={props.onClick} className="button" type={props.type || 'submit'}>{props.value || 'Default'}</button>
     </>
 )

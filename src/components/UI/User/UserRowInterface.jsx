@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { api } from "../../../services/api";
 
 import "./userRowInterface.css";
 
 import editIcon from "../../../assets/images/icons/edit.svg";
 import deleteIcon from "../../../assets/images/icons/delete.svg";
 import Modal from "react-modal";
+import { getUserLocalStorage } from "../../../contexts/AuthProvider/util";
 
 Modal.setAppElement("#root");
 
 const ArticleCard = ({ user }) => {
   const navigate = useNavigate();
   const [modalisOpen, setIsOpen] = useState(false);
+  const token = getUserLocalStorage().token;
 
   function handleOpenModal() {
     setIsOpen(true);
@@ -31,6 +34,8 @@ const ArticleCard = ({ user }) => {
         },
       })
       .then((response) => {
+        alert('Usuário deletado com sucesso!');
+        window.location.href = window.location.href; 
         navigate("/users_page");
       });
 
@@ -45,7 +50,7 @@ const ArticleCard = ({ user }) => {
         <td>{user.email}</td>
 
         <td className="admin-buttons">
-          <Link to={`/edit_user/${user.id}`}>
+          <Link to={`/edit_user/${user.id_editor}`}>
             <button>
               <img src={editIcon} alt="" />
             </button>
@@ -70,7 +75,7 @@ const ArticleCard = ({ user }) => {
         <div className="modal-buttons">
           <button
             className="validateButton"
-            onClick={() => deleteUser(user.id)}
+            onClick={() => deleteUser(user.id_editor)}
           >
             Sim
           </button>

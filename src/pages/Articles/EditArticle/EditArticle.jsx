@@ -225,7 +225,7 @@ export default () => {
                 required
               />
 
-              <Button name="btnSetArticle" value="Atualizar" />
+              <Button onClick={onSubmit} name="btnSetArticle" value="Atualizar" />
             </div>
           </form>
         </div>
