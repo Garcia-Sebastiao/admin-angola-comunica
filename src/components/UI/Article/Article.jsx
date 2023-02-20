@@ -11,7 +11,6 @@ export default ({ article }) => {
     api
       .get(`/blog/global/reader/view_info_editor/${article.editor_id}`)
       .then((response) => {
-        console.log(response.data);
         setUser(response.data);
       });
   }, []);
