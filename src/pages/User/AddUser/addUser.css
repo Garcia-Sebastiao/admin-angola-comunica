@@ -1,34 +1,73 @@
-.page-auth
-{
-    display: flex;
-    height: 100vh;
+.add-user {
+  display: flex;
+  height: 100vh;
 }
-.page-auth aside
-{
-    flex: 0.7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--second-color);
+.add-user main .form-box {
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.page-auth aside img
-{
-    width: 10rem;
+.add-user aside {
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--second-color);
 }
-.page-auth main
-{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.add-user aside img {
+  width: 10rem;
+}
+.add-user main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.page-auth main img{
-    margin: 1rem 0;
-    width: 3rem;
+.add-user main img {
+  margin: 1rem 0;
+  width: 3rem;
 }
-.page-auth main img
-{
-    margin: 2rem;
+.add-user main img {
+  margin: 2rem;
+}
+
+.add-user main button {
+  width: 100%;
+  margin: 1rem;
+  border: none;
+  background-color: var(--mc-mandalay);
+  border-radius: 7px;
+  padding: 0.7rem 2rem;
+  color: white;
+}
+.add-user main button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(0.9);
+}
+.add-user main button:disabled {
+  filter: brightness(0.5);
+}
+@media screen and (max-width: 820px) {
+  .add-user {
+    flex-direction: column;
+  }
+  .add-user .aside {
+    flex: 0.2;
+  }
+  .add-user .aside img {
+    width: 8rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .add-user main .form-box {
+    width: 20rem;
+  }
+  .add-user .aside img {
+    width: 5rem;
+  }
 }

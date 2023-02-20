@@ -38,66 +38,68 @@ export default () => {
     const image = imageRef.current.files[0];
     const headersForm = form.getHeaders;
 
-    form.append('username', values.username);
-    form.append('email', values.email);
-    form.append('password', values.password);
-    form.append('image', image);
+    form.append("username", values.username);
+    form.append("email", values.email);
+    form.append("password", values.password);
+    form.append("image", image);
 
     api[method](url, form, {
       headers: {
         ...headersForm,
-        authorization: `Bearer ${token}`
-      }
+        authorization: `Bearer ${token}`,
+      },
     }).then((response) => {
-      alert('Editor adicionado com sucesso!')
+      alert("Editor adicionado com sucesso!");
       navigate("/users_page");
     });
   }
 
   return (
     <>
-      <form
-        className="user-form"
-        autoComplete="off"
-        encType="multipart/form-data"
-        onSubmit={onSubmit}
-        action=""
-      >
-        <input
-          placeholder="Nome"
-          name="username"
-          type="text"
-          value={values.username}
-          onChange={onChange}
-        />
+      <div className="form-box">
+        <form
+          className="user-form"
+          autoComplete="off"
+          encType="multipart/form-data"
+          onSubmit={onSubmit}
+          action=""
+        >
+          <input
+            placeholder="Nome"
+            name="username"
+            type="text"
+            value={values.username}
+            onChange={onChange}
+          />
 
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          value={values.email}
-          onChange={onChange}
-        />
+          <input
+            placeholder="Email"
+            name="email"
+            type="email"
+            value={values.email}
+            onChange={onChange}
+          />
 
-        <input
-          placeholder="Senha"
-          name="password"
-          type="password"
-          value={values.password}
-          onChange={onChange}
-        />
+          <input
+            placeholder="Senha"
+            name="password"
+            type="password"
+            value={values.password}
+            onChange={onChange}
+          />
 
-        <input
-          ref={imageRef}
-          type="file"
-          placeholder="Fotos"
-          accept="image/*"
-          multiple={false}
-          required
-        />
+          <input
+            ref={imageRef}
+            type="file"
+            placeholder="Fotos"
+            accept="image/*"
+            multiple={false}
+            required
+          />
+        </form>
 
         <Button value="Salvar" />
-      </form>
+      </div>
     </>
   );
 };

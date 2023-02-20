@@ -30,11 +30,10 @@ import { api } from "../../services/api";
 
 export default () => {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [articles, setArticle] = useState([]);
   const [state, setState] = useState(false);
-  const [sidebar, setSidebar] = useState(false);
+  const [articles, setArticle] = useState([]);
   const [theme, setTheme] = useState("light");
+  const [sidebar, setSidebar] = useState(false);
   const themeState = localStorage.getItem("theme");
 
   function switchTheme() {
@@ -55,21 +54,13 @@ export default () => {
     state ? setState(false) : "";
   }
 
-  const params = {};
-
-  if (search) {
-    params.subtitle_like = search;
-  }
-
   useEffect(() => {
     api
-      .get("https://apiblogdb.onrender.com/blog/global/view_article_all", {
-        params,
-      })
+      .get("https://apiblogdb.onrender.com/blog/global/view_article_all")
       .then((response) => {
         setArticle(response.data);
       });
-  }, [search]);
+  }, []);
 
   return (
     <div className="main-page dark-mode" data-theme={themeState}>
@@ -129,8 +120,6 @@ export default () => {
           title="Overview"
           text="Tenha uma vista geral das oiperações realizadas."
           state={true}
-          value={search}
-          onChange={(ev) => setSearch(ev.target.value)}
         />
 
         <div className="counter-cards">

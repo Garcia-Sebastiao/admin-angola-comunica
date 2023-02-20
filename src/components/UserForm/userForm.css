@@ -1,4 +1,5 @@
 .user-form{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,17 +15,8 @@
     padding: 1rem;
     color: rgb(159, 159, 159);
 }
-.user-form
-{
-    width: 25rem;
-}
 .user-form input:nth-child(5)
 {
     width: 25rem;
     padding: 0.6rem;
-}
-.user-form button
-{
-    width: 100%;
-    margin: 1rem;
 }

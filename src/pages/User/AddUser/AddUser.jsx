@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
+import { Link } from "react-router-dom";
 
 /*----------------- CSS -------------------*/
 import "./addUser.css";
@@ -13,9 +14,11 @@ import UserForm from "../../../components/UserForm/UserForm";
 
 export default () => {
   return (
-    <div className="page-auth">
-      <aside>
-        <img src={logoHero} alt="logoImage" />
+    <div className="add-user">
+      <aside className="aside">
+        <Link to="/home">
+          <img src={logoHero} alt="logoImage" />
+        </Link>
       </aside>
 
       <main>

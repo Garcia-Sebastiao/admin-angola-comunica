@@ -83,7 +83,7 @@ export default () => {
             }
           />
           <Route
-            path="/edit_users"
+            path="/edit_user/:id_editor"
             element={
               <AdminProtected>
                 <EditUser />
