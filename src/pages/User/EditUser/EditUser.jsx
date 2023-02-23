@@ -44,12 +44,14 @@ export default () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
+    console.log('respondendo')
     const method = "put";
     const url = `/blog/admin/update_info_of_editor/${id_editor}`;
 
     const image = imageRef.current.files[0];
     const headersForm = form.getHeaders;
 
+    form.append("yourname", values.yourname);
     form.append("username", values.username);
     form.append("email", values.email);
     form.append("password", values.password);
@@ -86,6 +88,14 @@ export default () => {
             onSubmit={onSubmit}
             action=""
           >
+            <input
+              placeholder="Nome"
+              name="yourname"
+              type="text"
+              value={values.yourname}
+              onChange={onChange}
+            />
+
             <input
               placeholder="Nome"
               name="username"
@@ -128,7 +138,7 @@ export default () => {
             />
           </form>
 
-          <Button value="Salvar" />
+          <Button onClick={onSubmit} value="Salvar" />
         </div>
         <br />
       </main>

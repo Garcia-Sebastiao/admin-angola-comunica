@@ -64,7 +64,7 @@ export default () => {
 
   if(localStorage.getItem('state') == 'Admin')
   {
-    url = '/blog/admin/view_article_all?_order=desc&_sort=id';
+    url = '/blog/global/view_article_all?_order=desc&_sort=id';
   }
   else {
     url = '/blog/editor/view_article_all?_order=desc&_sort=id';

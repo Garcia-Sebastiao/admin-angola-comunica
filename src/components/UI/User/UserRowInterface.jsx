@@ -45,7 +45,7 @@ const ArticleCard = ({ user }) => {
   return (
     <>
       <tr>
-        <td>{user.state}</td>
+        <td>{user.yourname}</td>
         <td>{user.username}</td>
         <td>{user.email}</td>
 

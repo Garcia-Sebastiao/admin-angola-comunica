@@ -114,7 +114,7 @@ export default () => {
         <table className="users-table">
           <thead>
             <tr>
-              <th>Estado</th>
+              <th>Nome próprio</th>
               <th>Nome</th>
               <th>Email</th>
               <th></th>

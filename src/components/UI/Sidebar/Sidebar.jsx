@@ -24,8 +24,16 @@ export default (props) => {
   };
 
   useEffect(() => {
+    let url = "";
+
+    if (localStorage.getItem("state") == "Admin") {
+      url = "/blog/admin/view_info_admin";
+    } else {
+      url = "/blog/editor/view_info_editor";
+    }
+
     api
-      .get(`/blog/editor/view_info_editor`, {
+      .get(url, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -44,7 +52,11 @@ export default (props) => {
         <div className="sidebar_img">
           <img
             className="user-img"
-            src={`https://apiblogdb.onrender.com/blog/editor/view_image/${user.id_editor}`}
+            src={
+              localStorage.getItem("state") == "Admin"
+                ? `https://apiblogdb.onrender.com/blog/admin/view_image_admin/${token}`
+                : `https://apiblogdb.onrender.com/blog/editor/view_image/${user.id_editor}`
+            }
             alt="userImage"
           />
         </div>

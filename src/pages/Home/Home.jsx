@@ -60,6 +60,11 @@ export default () => {
       .then((response) => {
         setArticle(response.data);
       });
+
+      api.get('/blog/global/all_editors_and_admin')
+      .then(response => {
+        console.log(response.data);
+      })
   }, []);
 
   return (

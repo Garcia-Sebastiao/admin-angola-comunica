@@ -6,6 +6,7 @@ import "./articleRowInterface.css";
 import editIcon from "../../../assets/images/icons/edit.svg";
 import hideIcon from "../../../assets/images/icons/hide.svg";
 import deleteIcon from "../../../assets/images/icons/delete.svg";
+import showIcon from "../../../assets/images/icons/icons8_eye.svg";
 import Modal from "react-modal";
 import { api } from "../../../services/api";
 import { getUserLocalStorage } from "../../../contexts/AuthProvider/util";
@@ -15,37 +16,55 @@ Modal.setAppElement("#root");
 const ArticleRowInterface = ({ article }) => {
   const navigate = useNavigate();
   const token = getUserLocalStorage().token;
+  const [state, setState] = useState(true);
   const [modalisOpen, setIsOpen] = useState(false);
 
   async function deleteArticle(id) {
-    let url = '';
+    let url = "";
 
-    if(localStorage.getItem('state') == 'Admin')
-    {
-      url = `/blog/admin/article/delete-post/${id}`
-    }
-    else{
+    if (localStorage.getItem("state") == "Admin") {
+      url = `/blog/admin/article/delete-post/${id}`;
+    } else {
       url = `/blog/editor/article/delete-post/${id}`;
     }
-    
+
     await api
       .delete(url, {
         headers: {
-          authorization: `Bearer ${token}`
+          authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        alert('Artigo deletado com sucesso');
+        alert("Artigo deletado com sucesso");
         navigate("/articles_page");
       });
 
     setIsOpen(false);
   }
 
-  async function switchVisbility ({idArticle}) {
-    api.post(
-      
-    )
+  async function switchVisbility(id) {
+    if (state == true) {
+      console.log(token)
+      await api
+        .put(`/blog/admin/article/hide-post/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setState(false);
+        });
+    } else if (state == false) {
+      await api
+        .put(`/blog/admin/article/show-post/${id}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setState(true);
+        });
+    }
   }
 
   function handleOpenModal() {
@@ -64,8 +83,12 @@ const ArticleRowInterface = ({ article }) => {
         <td className="subtitle-row">{article.title}</td>
 
         <td className="articles-buttons">
-          <button>
-            <img src={hideIcon} alt="" />
+          <button onClick={() => switchVisbility(article.idArticle)}>
+            <img
+              className="show-hide"
+              src={state ? showIcon : hideIcon}
+              alt=""
+            />
           </button>
 
           <Link to={`/edit_articles/${article.idArticle}`}>
@@ -98,10 +121,7 @@ const ArticleRowInterface = ({ article }) => {
             Sim
           </button>
 
-          <button 
-            className="denyButton" 
-            onClick={handleCloseModal}
-          >
+          <button className="denyButton" onClick={handleCloseModal}>
             Não
           </button>
         </div>

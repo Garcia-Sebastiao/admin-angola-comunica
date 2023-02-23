@@ -8,19 +8,22 @@ export default ({ article }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
+
     api
-      .get(`/blog/global/reader/view_info_editor/${article.editor_id}`)
+      .get(article.id_admin == null ? `/blog/global/reader/view_info_editor/${article.editor_id}` : `/blog/global/view_info_admin/${article.id_admin}`)
       .then((response) => {
+        console.log(response.data)
         setUser(response.data);
       });
   }, []);
+
   return (
     <>
       <div className="article-card">
         <div className="article-head">
           <img
             src={`https://apiblogdb.onrender.com/blog/global/view_article/image/${article.idArticle}`}
-            alt="articleImage"
+            alt={article.title}
           />
         </div>
 
@@ -34,11 +37,11 @@ export default ({ article }) => {
           <div className="author-inf">
             <div className="editor_image">
               <img
-                src={`https://apiblogdb.onrender.com/blog/global/view_image/${user.id_editor}`}
+                src={article.id_admin == null ? `https://apiblogdb.onrender.com/blog/global/view_image/${article.editor_id}` : `https://apiblogdb.onrender.com/blog/global/view_image_admin/${article.id_admin}`}
                 alt="authorImage"
               />
             </div>
-            <span>{user.username}</span>
+            <span>{user.yourname}</span>
           </div>
 
           <div>
