@@ -10,12 +10,6 @@ import "./userForm.css";
 import Button from "../UI/Button/Button";
 import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
-const initialValue = {
-  state: "",
-  name: "",
-  email: "",
-};
-
 export default () => {
   const [values, setValues] = useState([]);
   const navigate = useNavigate();
@@ -39,6 +33,7 @@ export default () => {
     const headersForm = form.getHeaders;
 
     form.append("username", values.username);
+    form.append("yourname", values.yourname);
     form.append("email", values.email);
     form.append("password", values.password);
     form.append("confirm_password", values.confirm_password);
@@ -66,7 +61,15 @@ export default () => {
           action=""
         >
           <input
-            placeholder="Nome"
+            placeholder="Nome Próprio"
+            name="yourname"
+            type="text"
+            value={values.yourname}
+            onChange={onChange}
+          />
+
+          <input
+            placeholder="Nome de Usuário"
             name="username"
             type="text"
             value={values.username}

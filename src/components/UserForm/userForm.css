@@ -15,8 +15,3 @@
     padding: 1rem;
     color: rgb(159, 159, 159);
 }
-.user-form input:nth-child(5)
-{
-    width: 25rem;
-    padding: 0.6rem;
-}

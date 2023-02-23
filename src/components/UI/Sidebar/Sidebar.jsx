@@ -11,7 +11,7 @@ export default (props) => {
   const auth = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
-  const token = getUserLocalStorage().token;
+  const token = getUserLocalStorage()?.token;
 
   const handleLogout = async () => {
     try {
@@ -48,7 +48,7 @@ export default (props) => {
             alt="userImage"
           />
         </div>
-        <span>{user.username}</span>
+        <span>{user.yourname}</span>
 
         <div className="others-users">
           <h4>Outros Usuários</h4>

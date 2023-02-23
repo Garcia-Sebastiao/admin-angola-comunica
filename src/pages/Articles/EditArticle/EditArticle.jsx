@@ -61,7 +61,7 @@ export default () => {
   function onSubmit(ev) {
     ev.preventDefault();
     const method = "put";
-    const url = ``;
+    let url = ``;
 
     if(localStorage.getItem('state') == 'Admin')
     {

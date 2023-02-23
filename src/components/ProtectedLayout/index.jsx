@@ -6,19 +6,19 @@ import Modal from "../UI/Modal/Modal";
 export const ProtectedLayout = ({ children }) => {
   const user = getUserLocalStorage();
 
-  if (!user) {
-    return (
-      <>
-        <Modal
-          type="Error"
-          title="Acesso Negado!"
-          message="Você precisa fazer login."
-        />
+  // if (!user) {
+  //   return (
+  //     <>
+  //       <Modal
+  //         type="Error"
+  //         title="Acesso Negado!"
+  //         message="Você precisa fazer login."
+  //       />
 
-        <SignIn />
-      </>
-    );
-  }
+  //       <SignIn />
+  //     </>
+  //   );
+  // }
 
   return children;
 };

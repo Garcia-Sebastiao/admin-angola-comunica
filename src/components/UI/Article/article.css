@@ -25,10 +25,10 @@
 }
 .article-card .article-body
 {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 0.5rem;
+    flex-direction: column;
 }
 .article-card .article-body .categorie
 {
@@ -40,15 +40,6 @@
 {
     font-size: 1rem;
     color: white;
-}
-.article-card .article-body a
-{
-    padding: 0.4rem;
-    background-color: var(--mc-mandalay);
-    color: white;
-    text-align: center;
-    font-size: 0.8rem;
-    border-radius: 0px 10px 0px 10px;
 }
 .article-card .article-body a:hover
 {

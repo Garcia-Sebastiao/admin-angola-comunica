@@ -25,6 +25,7 @@ import ArticleRowInterface from "../../components/UI/Article/ArticleRowInterface
 import LinkComponent from "../../components/LinkComponent";
 import { api } from "../../services/api";
 import Sidebar from "../../components/UI/Sidebar/Sidebar";
+import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
 export default () => {
   const [search, setSearch] = useState("");
@@ -33,6 +34,7 @@ export default () => {
   const [sidebar, setSidebar] = useState(false);
   const [theme, setTheme] = useState("dark");
   const themeState = localStorage.getItem("theme");
+  const token = getUserLocalStorage().token;
 
   function switchTheme() {
     if (theme == "light") {
@@ -58,9 +60,23 @@ export default () => {
     params.subtitle_like = search;
   }
 
+  let url = '';
+
+  if(localStorage.getItem('state') == 'Admin')
+  {
+    url = '/blog/admin/view_article_all?_order=desc&_sort=id';
+  }
+  else {
+    url = '/blog/editor/view_article_all?_order=desc&_sort=id';
+  }
+
   useEffect(() => {
     api
-      .get("/blog/global/view_article_all?_order=desc&_sort=id", { params })
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         setArticle(response.data);
       });

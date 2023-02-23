@@ -23,6 +23,7 @@ import Header from "../../../components/UI/Header/Header";
 import Sidebar from "../../../components/UI/Sidebar/Sidebar";
 import Article from "../../../components/UI/Article/Article";
 import Carrousel from "../../../components/Carrousel/Carrousel";
+import ArticleRowInterface from "../../../components/UI/Article/ArticleRowInterface";
 
 export default () => {
   const [state, setState] = useState(false);
@@ -31,6 +32,7 @@ export default () => {
   const themeState = localStorage.getItem("theme");
   const [search, setSearch] = useState("");
   const [articles, setArticle] = useState([]);
+  const newSearch = search[0]?.toUpperCase() + search?.substring(1);
 
   function switchTheme() {
     if (theme == "light") {
@@ -55,7 +57,7 @@ export default () => {
     if (search != "1" && search != " ") {
       axios
         .get(
-          `https://apiblogdb.onrender.com/blog/global/search_article/query=${search}`
+          `https://apiblogdb.onrender.com/blog/global/search_article/query=${newSearch}`
         )
         .then((resp) => {
           setArticle(resp.data);
@@ -134,17 +136,29 @@ export default () => {
           </div>
         </Header>
 
-        <div className="search-results">
-          <Carrousel>
-            {{ handleSearch } ? (
-              articles.map((article) => <Article article={article} />)
+        <br /><br />
+        <table className="articles-table">
+          <thead>
+            <tr>
+              <th className="date-column">Data</th>
+              <th className="categorie-column">Categoria</th>
+              <th className="title-column">Titulo do Artigo</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {search.length ? (
+              articles.map((article) => (
+                <ArticleRowInterface article={article} />
+              ))
             ) : (
-              <p style={{ padding: "0rem" }} className="warning">
+              <p style={{ padding: "1rem" }} className="warning">
                 Sem Correspondências...
               </p>
             )}
-          </Carrousel>
-        </div>
+          </tbody>
+        </table>
       </main>
 
       <Sidebar className={sidebar ? "appear" : ""} />
