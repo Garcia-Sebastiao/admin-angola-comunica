@@ -7,12 +7,40 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { api } from "../../services/api";
 import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ReactHtmlParser from "html-react-parser";
+
 export default ({}) => {
   const form = new FormData();
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const [values, setValues] = useState([]);
   const token = getUserLocalStorage().token;
+  const [richValue, setRich] = useState("");
+  const richtextToolbarConfig = {
+    toolbar: [
+      "heading",
+      "|",
+      "bold",
+      "italic",
+      "blockQuote",
+      "link",
+      "numberedList",
+      "bulletedList",
+      "insertTable",
+      "tableColumn",
+      "tableRow",
+      "mergeTableCells",
+      "|",
+      "undo",
+      "redo",
+    ],
+  };
+
+  function handleOnChange(ev, editor) {
+    setRich(editor.getData());
+  }
 
   function onChange(ev) {
     const { name, value } = ev.target;
@@ -24,14 +52,11 @@ export default ({}) => {
     ev.preventDefault();
     const method = "post";
 
-    let url = '';
+    let url = "";
 
-    if(localStorage.getItem('state') == 'Admin')
-    {
+    if (localStorage.getItem("state") == "Admin") {
       url = `/blog/admin/article/add-post`;
-    }
-    else
-    {
+    } else {
       url = `/blog/editor/article/add-post`;
     }
 
@@ -40,7 +65,7 @@ export default ({}) => {
     const headersForm = form.getHeaders;
     form.append("title", values.title);
     form.append("subtitle", values.subtitle);
-    form.append("body", values.body);
+    form.append("body", richValue);
     form.append("image", image);
     form.append("font", values.font);
     form.append("category", values.category);
@@ -58,6 +83,16 @@ export default ({}) => {
 
   return (
     <div className="add-article-form">
+      <CKEditor
+        className="richtext"
+        editor={ClassicEditor}
+        placeholder="Descrição"
+        onChange={handleOnChange}
+        value={richValue}
+        config={richtextToolbarConfig}
+        required
+      />
+
       <form
         onSubmit={onSubmit}
         method="POST"
@@ -91,14 +126,11 @@ export default ({}) => {
             <option value="Diversos" />
           </datalist>
 
-          <textarea
-            rows="10"
-            cols="30"
-            name="body"
-            className="description"
-            placeholder="Descrição"
+          <input
+            name="font"
+            placeholder="Fontes"
             onChange={onChange}
-            value={values.body}
+            value={values.font}
             required
           />
         </div>
@@ -109,14 +141,6 @@ export default ({}) => {
             placeholder="Subtítulo"
             onChange={onChange}
             value={values.subtitle}
-            required
-          />
-
-          <input
-            name="font"
-            placeholder="Fontes"
-            onChange={onChange}
-            value={values.font}
             required
           />
 

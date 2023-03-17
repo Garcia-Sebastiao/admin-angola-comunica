@@ -105,18 +105,14 @@ export default () => {
           text="Gerencie os seus artigos com as operações disponíveis."
         />
 
-        <h3
-          style={{
-            fontFamily: "Poppins-Semi-Bold",
-          }}
-        >
+        <h3>
           Postar Artigo
         </h3>
 
         <Form />
       </main>
 
-      <Sidebar className={sidebar ? 'appear' : ''}/>
+      <Sidebar className={sidebar ? "appear" : ""} />
     </div>
   );
 };

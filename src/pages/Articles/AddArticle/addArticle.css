@@ -1,3 +1,5 @@
+@import '../../../index.css';
+
 .active {
   background-color: var(--mc-mandalay);
 }
@@ -5,6 +7,11 @@
 .main-page {
   display: flex;
   height: 100vh;
+}
+
+h3
+{
+  font-family: Poppins-Semi-Bold;
 }
 
 /*-------------------- Navbar-side --------------------*/
@@ -50,10 +57,11 @@
 .main-page main {
   flex: 1.6;
   padding: 2.5rem;
+  overflow-y: scroll;
 }
 .main-page main h3 {
   color: var(--mc-mandalay);
-  font-family: Asap-Semi-Bold;
+  font-family: Poppins-Semi-Bold;
   font-size: 1.1rem;
   padding: 3rem 0;
   filter: brightness(0.9);

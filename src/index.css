@@ -98,3 +98,6 @@
 body {
   background-color: var(--main-color);
 }
+h3{
+  font-family: Poppins-Semi-Bold;
+}

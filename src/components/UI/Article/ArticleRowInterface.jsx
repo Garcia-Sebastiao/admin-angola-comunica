@@ -37,6 +37,7 @@ const ArticleRowInterface = ({ article }) => {
       .then((response) => {
         alert("Artigo deletado com sucesso");
         navigate("/articles_page");
+        window.location.href = window.location.href;
       });
 
     setIsOpen(false);
