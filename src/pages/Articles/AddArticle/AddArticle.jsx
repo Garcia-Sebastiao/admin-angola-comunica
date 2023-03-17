@@ -48,7 +48,7 @@ export default () => {
   }
 
   return (
-    <div className="main-page dark-mode" data-theme={themeState}>
+    <div className="main-page-add dark-mode" data-theme={themeState}>
       <aside className="menu-side">
         <div>
           <img className="logo-hero" src={logoHero} alt="logoImage" />
@@ -88,14 +88,6 @@ export default () => {
               </Link>
             </li>
           </ul>
-
-          <ul>
-            <li>
-              <a href="/">
-                <img src={iconNotification} alt="" />
-              </a>
-            </li>
-          </ul>
         </Navbar>
       </aside>
 
@@ -105,7 +97,7 @@ export default () => {
           text="Gerencie os seus artigos com as operações disponíveis."
         />
 
-        <h3>
+        <h3 className="h3">
           Postar Artigo
         </h3>
 

@@ -45,11 +45,11 @@ const ArticleRowInterface = ({ article }) => {
 
   async function switchVisbility(id) {
     if (state == true) {
-      console.log(token)
+      console.log(token);
       await api
         .put(`/blog/admin/article/hide-post/${id}`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {

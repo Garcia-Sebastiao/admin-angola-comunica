@@ -9,7 +9,6 @@ import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import ReactHtmlParser from "html-react-parser";
 
 export default ({}) => {
   const form = new FormData();
@@ -18,6 +17,8 @@ export default ({}) => {
   const [values, setValues] = useState([]);
   const token = getUserLocalStorage().token;
   const [richValue, setRich] = useState("");
+  const [loader, setLoader] = useState(true);
+
   const richtextToolbarConfig = {
     toolbar: [
       "heading",
@@ -75,23 +76,29 @@ export default ({}) => {
         ...headersForm,
         authorization: `Bearer ${token}`,
       },
-    }).then((response) => {
-      alert("Artigo postado com sucesso!");
-      navigate("/articles_page");
-    });
+    })
+      .then((response) => {
+        alert("Artigo postado com sucesso!");
+        navigate("/articles_page");
+      })
+      .finally(() => {
+        setLoader(false);
+      });
   }
 
   return (
     <div className="add-article-form">
-      <CKEditor
-        className="richtext"
-        editor={ClassicEditor}
-        placeholder="Descrição"
-        onChange={handleOnChange}
-        value={richValue}
-        config={richtextToolbarConfig}
-        required
-      />
+      <div className="richtext">
+        <CKEditor
+          className="richtext"
+          editor={ClassicEditor}
+          placeholder="Descrição"
+          onChange={handleOnChange}
+          value={richValue}
+          config={richtextToolbarConfig}
+          required
+        />
+      </div>
 
       <form
         onSubmit={onSubmit}

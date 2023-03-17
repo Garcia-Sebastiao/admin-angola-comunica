@@ -4,6 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import FormData from "form-data";
 import { getUserLocalStorage } from "../../../contexts/AuthProvider/util";
+
+import ReactHtmlParser from "html-react-parser";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 /*----------------- CSS -------------------*/
 import "./editArticle.css";
 
@@ -34,6 +38,26 @@ export default () => {
   const token = getUserLocalStorage().token;
   const [state, setState] = useState(false);
   const [sidebar, setSidebar] = useState(false);
+  const [richValue, setRich] = useState("");
+  const richtextToolbarConfig = {
+    toolbar: [
+      "heading",
+      "|",
+      "bold",
+      "italic",
+      "blockQuote",
+      "link",
+      "numberedList",
+      "bulletedList",
+      "insertTable",
+      "tableColumn",
+      "tableRow",
+      "mergeTableCells",
+      "|",
+      "undo",
+      "redo",
+    ],
+  };
 
   function navToogle() {
     !state ? setState(true) : setState(false);
@@ -50,10 +74,17 @@ export default () => {
     setValues({ ...values, [name]: value });
   }
 
+  function handleOnChange(ev, editor) {
+    setRich(editor.getData());
+  }
+
+  const editor = new CKEditor;
+
   useEffect(() => {
     if (idArticle) {
       api.get(`/blog/global/view_article/${idArticle}`).then((response) => {
         setValues(response.data);
+        setRich(response.data.body)
       });
     }
   }, []);
@@ -63,12 +94,9 @@ export default () => {
     const method = "put";
     let url = ``;
 
-    if(localStorage.getItem('state') == 'Admin')
-    {
+    if (localStorage.getItem("state") == "Admin") {
       url = `/blog/admin/article/update-post/${idArticle}`;
-    }
-    else
-    {
+    } else {
       url = `/blog/editor/article/update-post/${idArticle}`;
     }
 
@@ -77,7 +105,7 @@ export default () => {
     const headersForm = form.getHeaders;
     form.append("title", values.title);
     form.append("subtitle", values.subtitle);
-    form.append("body", values.body);
+    form.append("body", richValue);
     form.append("image", image);
     form.append("font", values.font);
     form.append("category", values.category);
@@ -153,10 +181,20 @@ export default () => {
         </h3>
 
         <div className="add-article-form">
+          <CKEditor
+            className="richtext"
+            editor={ClassicEditor}
+            placeholder="Descrição"
+            onChange={handleOnChange}
+            data={richValue}
+            config={richtextToolbarConfig}
+            required
+          />
+
           <form
             onSubmit={onSubmit}
             method="POST"
-            enctype="multipart/form-data"
+            encType="multipart/form-data"
             className="new-article-form"
             autoComplete="off"
             action=""
@@ -187,14 +225,11 @@ export default () => {
                 <option value="Diversos" />
               </datalist>
 
-              <textarea
-                rows="10"
-                cols="30"
-                name="body"
-                className="description"
-                placeholder="Descrição"
+              <input
+                name="font"
+                placeholder="Fontes"
                 onChange={onChange}
-                value={values.body}
+                value={values.font}
                 required
               />
             </div>
@@ -209,14 +244,6 @@ export default () => {
               />
 
               <input
-                name="font"
-                placeholder="Fontes"
-                onChange={onChange}
-                value={values.font}
-                required
-              />
-
-              <input
                 ref={imageRef}
                 type="file"
                 placeholder="Fotos"
@@ -225,13 +252,17 @@ export default () => {
                 required
               />
 
-              <Button onClick={onSubmit} name="btnSetArticle" value="Atualizar" />
+              <Button
+                onClick={onSubmit}
+                name="btnSetArticle"
+                value="Atualizar"
+              />
             </div>
           </form>
         </div>
       </main>
 
-      <Sidebar className={sidebar ? 'appear' : ''}/>
+      <Sidebar className={sidebar ? "appear" : ""} />
     </div>
   );
 };

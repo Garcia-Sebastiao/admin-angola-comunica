@@ -4,7 +4,7 @@
   background-color: var(--mc-mandalay);
 }
 
-.main-page {
+.main-page-add {
   display: flex;
   height: 100vh;
 }
@@ -15,7 +15,7 @@ h3
 }
 
 /*-------------------- Navbar-side --------------------*/
-.main-page .menu-side {
+.main-page-add .menu-side {
   flex: 0.1;
   padding: 1.5rem 0.7rem;
   display: flex;
@@ -24,42 +24,42 @@ h3
   justify-content: space-between;
   background-color: var(--second-color);
 }
-.main-page .menu-side .logo-hero {
+.main-page-add .menu-side .logo-hero {
   width: 4rem;
 }
-.main-page .menu-side div {
+.main-page-add .menu-side div {
   flex: 1;
 }
-.main-page .menu-side nav {
+.main-page-add .menu-side nav {
   flex: 3;
 }
-.main-page .menu-side nav ul {
+.main-page-add .menu-side nav ul {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
 }
-.main-page .menu-side nav ul li {
+.main-page-add .menu-side nav ul li {
   padding: 0.7rem;
 }
-.main-page .menu-side nav ul li a {
+.main-page-add .menu-side nav ul li a {
   padding: 0.5rem;
   display: flex;
   border-radius: 5px;
 }
-.main-page .menu-side nav ul li a img {
+.main-page-add .menu-side nav ul li a img {
   width: 1.1rem;
 }
-.main-page .menu-side nav ul li:nth-child(2) a img {
+.main-page-add .menu-side nav ul li:nth-child(2) a img {
   width: 1.3rem;
 }
 
 /*-------------------- Main --------------------*/
-.main-page main {
+.main-page-add main {
   flex: 1.6;
   padding: 2.5rem;
   overflow-y: scroll;
 }
-.main-page main h3 {
+.main-page-add main .h3 {
   color: var(--mc-mandalay);
   font-family: Poppins-Semi-Bold;
   font-size: 1.1rem;
@@ -67,7 +67,7 @@ h3
   filter: brightness(0.9);
 }
 /*-------------------- Users-side --------------------*/
-.main-page .users-side {
+.main-page-add .users-side {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,47 +75,47 @@ h3
   flex: 0.35;
   background-color: var(--second-color);
 }
-.main-page .users-side h2 {
+.main-page-add .users-side h2 {
   padding-top: 1.5rem;
   color: white;
   filter: brightness(0.9);
   font-weight: normal;
   font-size: 1.2rem;
 }
-.main-page .users-side .user-task {
+.main-page-add .users-side .user-task {
   color: white;
   font-size: 0.9rem;
   padding: 0.5rem;
   filter: brightness(0.6);
 }
-.main-page .users-side .online-user {
+.main-page-add .users-side .online-user {
   width: 45%;
   margin-top: 3rem;
   border-radius: 50%;
 }
-.main-page .users-side span:nth-child(4) {
+.main-page-add .users-side span:nth-child(4) {
   color: white;
   font-size: 0.9rem;
   padding: 0.8rem;
   filter: brightness(0.95);
 }
-.main-page .users-side .others-users {
+.main-page-add .users-side .others-users {
   margin-top: 2rem;
 }
-.main-page .users-side .others-users h4 {
+.main-page-add .users-side .others-users h4 {
   margin: 1rem 0;
   color: white;
   font-weight: normal;
   filter: brightness(0.9);
 }
-.main-page .users-side .others-users .users {
+.main-page-add .users-side .others-users .users {
   display: flex;
   flex-direction: column;
 }
-.main-page .users-side .others-users .user {
+.main-page-add .users-side .others-users .user {
   margin: 0.7rem 0;
 }
-.main-page .users-side .others-users a {
+.main-page-add .users-side .others-users a {
   width: 100%;
   margin: 2rem 0;
   display: flex;
@@ -126,11 +126,11 @@ h3
   border-radius: 7px;
   background-color: var(--mc-mandalay);
 }
-.main-page .users-side .others-users a:hover {
+.main-page-add .users-side .others-users a:hover {
   filter: brightness(0.9);
   transition: 0.4s;
 }
-.main-page .users-side .logoff {
+.main-page-add .users-side .logoff {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,7 +138,7 @@ h3
   filter: brightness(0.9);
   font-size: 0.9rem;
 }
-.main-page .users-side .logoff:hover {
+.main-page-add .users-side .logoff:hover {
   filter: brightness(0.8);
   transition: 0.3s;
 }
@@ -146,11 +146,11 @@ h3
   display: none;
 }
 @media screen and (max-width: 820px) {
-  .main-page {
+  .main-page-add {
     display: flex;
     flex-direction: column;
   }
-  .main-page .menu-side {
+  .main-page-add .menu-side {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -159,7 +159,7 @@ h3
     align-items: center;
     justify-content: space-between;
   }
-  .main-page .menu-side nav {
+  .main-page-add .menu-side nav {
     position: absolute;
     top: 0;
     transform: translateX(-100%);
@@ -167,7 +167,7 @@ h3
     height: 100vh;
     background-color: var(--second-color);
   }
-  .main-page .menu-side nav.appear {
+  .main-page-add .menu-side nav.appear {
     transform: translateX(0);
   }
   .menu-side .nav-options {
@@ -192,7 +192,7 @@ h3
     width: 2.5rem;
     transition: .4s;
   }
-  .main-page main {
+  .main-page-add main {
     padding: 1rem;
     margin: 0;
     padding-top: 5rem;
